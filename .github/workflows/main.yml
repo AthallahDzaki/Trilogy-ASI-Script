@@ -1,6 +1,6 @@
 name: CMake
 
-on: [push, pull_request]
+on: [push]
 
 jobs:
   build:
@@ -35,22 +35,8 @@ jobs:
       run: |
         cd bin
         ninja
-        cp TrilogyChaosMod.III.asi output_III/TrilogyChaosMod.III.asi
-        cp TrilogyChaosMod.VC.asi output_VC/TrilogyChaosMod.VC.asi
         cp TrilogyChaosMod.SA.asi output_SA/TrilogyChaosMod.SA.asi
 
-    - name: Upload III
-      uses: actions/upload-artifact@v1
-      with:
-        name: "TrilogyChaosMod.III"
-        path: bin/output_III
-
-    - name: Upload VC
-      uses: actions/upload-artifact@v1
-      with:
-        name: "TrilogyChaosMod.VC"
-        path: bin/output_VC
-        
     - name: Upload SA
       uses: actions/upload-artifact@v1
       with:
