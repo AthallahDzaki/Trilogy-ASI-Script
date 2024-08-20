@@ -67,7 +67,7 @@ public:
     }
 };
 
-DEFINE_EFFECT (RemoveAngryHobo, "effect_remove_random_angry_hobo", 0);
-DEFINE_EFFECt (RemoveAngryHobo, "effect_remove_nearest_angry_hobo", 1);
-DEFINE_EFFECT (RemoveAngryHobo, "effect_remove_farthest_angry_hobo", 2);
-DEFINE_EFFECT (RemoveAngryHobo, "effect_remove_all_angry_hobo", 3);
+DEFINE_EFFECT (RemoveAngryHobo, "effect_remove_random_angry_hobo", 0, 0);
+DEFINE_EFFECt (RemoveAngryHobo, "effect_remove_nearest_angry_hobo", 0, 1);
+DEFINE_EFFECT (RemoveAngryHobo, "effect_remove_farthest_angry_hobo", 0, 2);
+DEFINE_EFFECT (RemoveAngryHobo, "effect_remove_all_angry_hobo", 0, 3);
