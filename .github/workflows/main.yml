@@ -46,6 +46,7 @@ jobs:
       with:
         files: bin/output_SA resources/
         dest: SA-CHAOS.zip
+        
     - name: Upload Release
       uses: ncipollo/release-action@v1.12.0
       with:
