@@ -41,13 +41,13 @@ jobs:
         name: "TrilogyChaosMod.SA"
         path: bin/output_SA
         
-    - name: Move ASI for Upload
-      run: |
-        mv bin/output_SA/TrilogyChaosMod.SA.asi .
-        
-    - name: Release
-      uses: thedoctor0/zip-release@0.7.5
+    - name: Zip
+    - uses: vimtor/action-zip@v1.2
       with:
-        type: 'zip'
-        filename: 'release.zip'
-        exclusions: '*.git* /*node_modules/* .editorconfig cmake lib src test CMakeLists.txt README.md CONTRIBUTING.md .gitignore .clang-format'
+        files: bin/output_SA resources/
+        dest: SA-CHAOS.zip
+    - name: Upload Release
+      uses: ncipollo/release-action@v1.12.0
+      with:
+        artifacts: "SA-CHAOS.zip"
+        token: ${{ secrets.GITHUB_TOKEN }}
