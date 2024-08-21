@@ -42,7 +42,7 @@ jobs:
         path: bin/output_SA
         
     - name: Zip
-    - uses: vimtor/action-zip@v1.2
+      uses: vimtor/action-zip@v1.2
       with:
         files: bin/output_SA resources/
         dest: SA-CHAOS.zip
