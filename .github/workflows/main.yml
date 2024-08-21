@@ -27,8 +27,6 @@ jobs:
         mkdir bin
         cd bin
         cmake -G "Ninja" -DCMAKE_BUILD_TYPE=Release ../
-        mkdir output_III
-        mkdir output_VC
         mkdir output_SA
     
     - name: Compile
@@ -42,4 +40,14 @@ jobs:
       with:
         name: "TrilogyChaosMod.SA"
         path: bin/output_SA
-  
+        
+    - name: Move ASI for Upload
+      run: |
+        mv bin/output_SA/TrilogyChaosMod.SA.asi .
+        
+    - name: Release
+      uses: thedoctor0/zip-release@0.7.5
+      with:
+        type: 'zip'
+        filename: 'release.zip'
+        exclusions: '*.git* /*node_modules/* .editorconfig cmake lib src test CMakeLists.txt README.md CONTRIBUTING.md .gitignore .clang-format'
