@@ -17,16 +17,10 @@ Check out the [CONTRIBUTING](CONTRIBUTING.md) file for more information.
 Similar to the old [Vice City Chaos% mod](https://github.com/Lighnat0r-pers/gta-vc-chaos) by [Lightnat0r](https://github.com/Lighnat0r), it activates effects in the corresponding game every X seconds / minutes (cooldown can be defined in the GUI).
 
 # Which GTA games does it support?
-It started off as a mod for **San Andreas**, which is the one that is mainly supported right now.  
-However, there is already basic support for **Vice City** and **III** implemented. It will take longer to bring all (if possible) custom effects over, and also implement their corresponding ingame cheats though.
+This mod Only Support **GTA San-Andreas** for now.
 
 # Which versions of the games does it support?
 **GTA San Andreas**: v1.0 US  
-~~**GTA Vice City**: v1.0 US~~  
-~~**GTA III**: v1.0 US~~
-
-So far only San Andreas is officially supported.  
-Vice City and III have some sort of basic support in already, but the GUI doesn't support them yet.
 
 # How do I downgrade my game to the required version?
 There's a San Andreas downgrader by gamerzworld in the GTAForums here:  
@@ -53,21 +47,16 @@ The reason why the Ultimate ASI Loader is **WAY BIGGER** in size is because it s
 If you don't need any of that, Silent's ASI Loader will be all you need.
 
 # How do I download the mod then?
-Head on over to the the `Releases` tab or [click here](https://github.com/gta-chaos-mod/asi-script/releases/latest).
+Head on over to the the `Releases` tab or [click here](https://github.com/AthallahDzaki/Trilogy-ASI-Script/releases/latest).
 
-Installation is as simple as installing an ASI Loader (see previous section) and copying all the files into your game directory. (So the `ChaosMod` folder, the `scripts` folder and the `.exe`)
+Installation is as simple as installing an ASI Loader (see previous section) and copying all the files into your game directory.
 
-The `.exe` can be anywhere you want, as long as it has write permissions since it automatically saves the settings in a file called `config.cfg` in the same directory.
-
-**You also need to have [.NET Framework 4.7.2](https://dotnet.microsoft.com/download/dotnet-framework/net472) installed.**
+To Work with My Custom Effect, you need to download my NodeJS Websocket Server [here](https://github.com/AthallahDzaki/Trilogy-Node-Script) and run it.
 
 # ... and how do I use it?
 Simple:
 1. Start the game
-2. Launch the corresponding `Trilogy Chaos Mod.exe`
-3. Simply press `Start`
-	1. If you want to have the timer start automatically when you **start a new game**, make sure to tick the `Auto-Start` checkbox in the top right.
-4. Suffer
+2. Run NodeJS Websocket Server
 
 # I'm getting an "Error: 126" when I try to start the game!
 You are most likely missing the DirectX 9 runtime.  
@@ -79,7 +68,7 @@ If that doesn't fix it then make sure you have the `bass.dll` in your game direc
 It comes bundled with the Chaos Mod archive you downloaded.
 
 # Is there a list of all effects?
-Of course! Here's a [spreadsheet](http://bit.ly/gta-sa-chaos-mod) that has all of them!
+Of course! Here's a [spreadsheet](http://bit.ly/gta-sa-chaos-mod) that has all of them! (Old)
 
 # The effect `SUPER. HOT.` isn't working correctly!
 It seems that mouse fixes such as `dinput8.dll` can cause issues with this (and maybe other) effects.
@@ -91,25 +80,8 @@ Hold down `Left CTRL` when hovering over the `Load Game` option in the menu.
 # Where are the autosaves being saved to?
 Inside a sub-directory called `chaos_mod` in your corresponding GTA User Files folder.
 
-# How do I setup the Twitch voting?
-In the Twitch tab you have to fill out the `Access Token` and `Client ID` fields.
-
-To get a ClientID and generate an Access Token, please head to [this website](https://chaos.lord.moe/) and follow the instructions.
-
-For Twitch you now have the option to have voting happen through chat messages (1, 2, 3) or their integrated Polls system.
-
-![https://i.imgur.com/UDmUKet.png](https://i.imgur.com/UDmUKet.png)
-
-# How do I setup the YouTube voting? (Experimental)
-Head into the `Settings` tab and switch the Stream Mode to `YouTube`.
-
-After that, switch back to the `Stream` tab (or enter it with the button in the top right)
-put in your YouTube live / watch ID for the livestream into the field.
-
-For example, if your livestream URL is `https://www.youtube.com/watch?v=19iuE4jIN5k`
-you'd put in `19iuE4jIN5k` as the Livestream ID.
-
-Do note that in YouTube mode there will be no chat messages posted about voting happening.
+# How do I setup the Tiktok Voting?
+Refer to the NodeJS Websocket Server [here](https://github.com/AthallahDzaki/Trilogy-Node-Script).
 
 # My game's crashing!
 Great! Create an issue with the `.log` and `.dmp` files from the `CrashDumps` folder. (Best to archive them into a `.zip` file or similar)

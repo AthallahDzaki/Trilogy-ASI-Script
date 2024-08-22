@@ -27,7 +27,9 @@ public:
                 if (player) {
                     CPed *nearest = nullptr;
                     float nearestDist = 999999.0f;
-                    for (CPed *ped : HoboManager::angryHobo) {
+                    //static inline std::vector<std::tuple<CPed *, int, eWeaponType>> angryHobo = {};
+                    for(int i = 0; i < HoboManager::angryHobo.size (); i++) {
+                        CPed *ped = std::get<CPed *> (HoboManager::angryHobo.at (i));
                         if (ped) {
                             float dist = DistanceBetweenPoints (player->GetPosition (), ped->GetPosition ());
                             if (dist < nearestDist) {
@@ -47,7 +49,8 @@ public:
                 if (player) {
                     CPed *farthest = nullptr;
                     float farthestDist = 0.0f;
-                    for (CPed *ped : HoboManager::angryHobo) {
+                    for(int i = 0; i < HoboManager::angryHobo.size (); i++) {
+                        CPed *ped = std::get<CPed *> (HoboManager::angryHobo.at (i));
                         if (ped) {
                             float dist = DistanceBetweenPoints (player->GetPosition (), ped->GetPosition ());
                             if (dist > farthestDist) {
@@ -58,7 +61,6 @@ public:
                     }
                     if (farthest) {
                         HoboManager::RemoveAngryHobo (farthest);
-                    }
                 }
                 break;
             }

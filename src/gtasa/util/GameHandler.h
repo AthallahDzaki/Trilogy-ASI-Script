@@ -8,6 +8,7 @@
 #include "util/GlobalHooksInstance.h"
 #include "util/GlobalRenderer.h"
 #include "util/Websocket.h"
+#include "util/HoboManager.h"
 
 #include <CAnimManager.h>
 #include <CAudioEngine.h>
@@ -55,6 +56,8 @@ public:
         BoneHelper::Initialise ();
         GlobalRenderer::Initialise ();
         GameFixes::Initialise ();
+
+        HoboManager::LoadAngryHobo ();
 
         // Custom save-file hook for "Slot 9"
         HOOK_ARGS (GlobalHooksInstance::Get (), Hooked_OpenFile,

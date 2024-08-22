@@ -25,8 +25,6 @@ include(cmake/uWebSockets.cmake)
 include(cmake/minhook.cmake)
 include(cmake/efsw.cmake)
 
-# include(cmake/gta3.cmake)
-# include(cmake/gtaVC.cmake)
 include(cmake/gtaSA.cmake)
 
 if(DEFINED ENV{GITHUB_SHA})

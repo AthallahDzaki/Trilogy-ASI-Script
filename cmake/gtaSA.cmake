@@ -24,6 +24,7 @@ target_precompile_headers(
     PUBLIC
     src/shared/_include/Definitions.h
     src/shared/_include/cpptoml.h
+    src/shared/_include/ini.h
     lib/bass.h
 )
 
