@@ -8,7 +8,8 @@ on:
 jobs:
   build:
     runs-on: windows-latest
-
+    permissions:
+      contents: write
     steps:
     - uses: actions/checkout@v3
 
@@ -53,5 +54,6 @@ jobs:
     - name: Upload Release
       uses: ncipollo/release-action@v1.12.0
       with:
+        allowUpdates: "true"
         artifacts: "SA-CHAOS.zip"
         token: ${{ secrets.GITHUB_TOKEN }}
