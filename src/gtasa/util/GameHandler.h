@@ -57,8 +57,6 @@ public:
         GlobalRenderer::Initialise ();
         GameFixes::Initialise ();
 
-        HoboManager::LoadAngryHobo ();
-
         // Custom save-file hook for "Slot 9"
         HOOK_ARGS (GlobalHooksInstance::Get (), Hooked_OpenFile,
                    FILE * (const char *, const char *), 0x5D0D66);
@@ -119,6 +117,8 @@ public:
     static void
     ProcessGame ()
     {
+        HoboManager::LoadAngryHobo (); // Call One Time, IDK where place suitable
+
         HandleAutoSave ();
         HandleQuickSave ();
 

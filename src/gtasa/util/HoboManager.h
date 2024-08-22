@@ -3,6 +3,9 @@
 #include <filesystem>
 #include <variant>
 
+#include "util/GlobalHooksInstance.h"
+#include "util/CPedDamageResponseCalculator.h"
+
 #include <CCivilianPed.h>
 #include <CPed.h>
 #include <CPickups.h>
@@ -21,6 +24,8 @@ public:
     static inline std::vector<std::tuple<CPed *, int, eWeaponType>> angryHobo
         = {};
 
+    static inline bool angryHoboLoaded = false;
+
     static std::filesystem::path
     GetHoboManagerPath ()
     {
@@ -37,6 +42,12 @@ public:
     static void
     LoadAngryHobo ()
     {
+        if (angryHoboLoaded) return;
+
+        byte gameState
+            = injector::ReadMemory<byte> (0xC8D4C0, true); // GameState
+
+        if (gameState != 9) return;
         // Load Hobo
         const std::filesystem::path managerPath = GetHoboManagerPath ();
 
@@ -51,37 +62,38 @@ public:
         // now we can read the file
         file.read (ini);
 
-        int   Type, Alive, Weapon;
-        float Health, X, Y, Z;
+        int   Type = 0, Alive = 0, Weapon = 0;
+        float Health = 0.0, X = 0.0, Y = 0.0, Z = 0.0;
         for (auto &section : ini)
         {
             for (auto &item : section.second)
             {
-                if (item.first == "Type")
+                std::cout << item.first << " = " << item.second << std::endl;
+                if (item.first == "type")
                 {
                     Type = std::stoi (item.second);
                 }
-                else if (item.first == "Alive")
+                else if (item.first == "alive")
                 {
                     Alive = std::stoi (item.second);
                 }
-                else if (item.first == "Weapon")
+                else if (item.first == "weapon")
                 {
                     Weapon = std::stoi (item.second);
                 }
-                else if (item.first == "Health")
+                else if (item.first == "health")
                 {
                     Health = std::stof (item.second);
                 }
-                else if (item.first == "X")
+                else if (item.first == "x")
                 {
                     X = std::stof (item.second);
                 }
-                else if (item.first == "Y")
+                else if (item.first == "y")
                 {
                     Y = std::stof (item.second);
                 }
-                else if (item.first == "Z")
+                else if (item.first == "z")
                 {
                     Z = std::stof (item.second);
                 }
@@ -93,6 +105,35 @@ public:
                 angryHobo.push_back (
                     std::make_tuple (ped, Type, (eWeaponType) Weapon));
             }
+        }
+
+        HOOK_METHOD_ARGS (GlobalHooksInstance::Get (), Hooked_ComputeWillKillPed,
+                          void (CPedDamageResponseCalculator *, CPed *, void *,
+                                char),
+                          0x4B5B27);
+
+        angryHoboLoaded = true;
+    }
+
+    static void
+    Hooked_ComputeWillKillPed (auto                        &&cb,
+                               CPedDamageResponseCalculator *thisCalc,
+                               CPed *ped, void *a3, char a4)
+    {
+        cb ();
+
+        if (!ped) return;
+
+        if(ped->m_fHealth > 0.0f) return; // Skip the hook if the ped is still alive
+
+        auto index = std::find_if (
+            angryHobo.begin (), angryHobo.end (),
+            [ped] (std::tuple<CPed *, int, eWeaponType> &t)
+            { return std::get<CPed *> (t) == ped; });
+        
+        if (index != angryHobo.end ())
+        {
+            _RemoveAngryHobo (ped);
         }
     }
 
@@ -112,14 +153,16 @@ public:
             eWeaponType weaponType = std::get<eWeaponType> (angryHobo.at (i));
             CVector     position   = ped->GetPosition ();
 
-            ini["Hobo" + std::to_string (i)]["Type"] = Type;
+            ini["Hobo" + std::to_string (i)]["Type"] = std::to_string (Type);
             ini["Hobo" + std::to_string (i)]["Alive"]
-                = ped->m_nPedState != PEDSTATE_DIE;
-            ini["Hobo" + std::to_string (i)]["Weapon"] = weaponType;
-            ini["Hobo" + std::to_string (i)]["Health"] = ped->m_fHealth;
-            ini["Hobo" + std::to_string (i)]["X"]      = position.x;
-            ini["Hobo" + std::to_string (i)]["Y"]      = position.y;
-            ini["Hobo" + std::to_string (i)]["Z"]      = position.z;
+                = std::to_string (ped->m_nPedState != PEDSTATE_DIE);
+            ini["Hobo" + std::to_string (i)]["Weapon"]
+                = std::to_string (weaponType);
+            ini["Hobo" + std::to_string (i)]["Health"]
+                = std::to_string (ped->m_fHealth);
+            ini["Hobo" + std::to_string (i)]["X"] = std::to_string (position.x);
+            ini["Hobo" + std::to_string (i)]["Y"] = std::to_string (position.y);
+            ini["Hobo" + std::to_string (i)]["Z"] = std::to_string (position.z);
         }
 
         file.generate (ini);

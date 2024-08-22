@@ -37,6 +37,7 @@ class TrilogyChaosMod
 public:
     TrilogyChaosMod ()
     {
+
         UnProtectInstance ();
 
         Config::Init ();
