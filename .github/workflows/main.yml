@@ -1,6 +1,9 @@
 name: CMake
 
-on: [push, pull_request]
+on: 
+  push:
+    tags:
+      - "**"
 
 jobs:
   build:
@@ -27,33 +30,28 @@ jobs:
         mkdir bin
         cd bin
         cmake -G "Ninja" -DCMAKE_BUILD_TYPE=Release ../
-        mkdir output_III
-        mkdir output_VC
         mkdir output_SA
     
     - name: Compile
       run: |
         cd bin
         ninja
-        cp TrilogyChaosMod.III.asi output_III/TrilogyChaosMod.III.asi
-        cp TrilogyChaosMod.VC.asi output_VC/TrilogyChaosMod.VC.asi
         cp TrilogyChaosMod.SA.asi output_SA/TrilogyChaosMod.SA.asi
 
-    - name: Upload III
-      uses: actions/upload-artifact@v1
-      with:
-        name: "TrilogyChaosMod.III"
-        path: bin/output_III
-
-    - name: Upload VC
-      uses: actions/upload-artifact@v1
-      with:
-        name: "TrilogyChaosMod.VC"
-        path: bin/output_VC
-        
     - name: Upload SA
       uses: actions/upload-artifact@v1
       with:
         name: "TrilogyChaosMod.SA"
         path: bin/output_SA
-  
+        
+    - name: Zip
+      uses: vimtor/action-zip@v1.2
+      with:
+        files: bin/output_SA resources/
+        dest: SA-CHAOS.zip
+        
+    - name: Upload Release
+      uses: ncipollo/release-action@v1.12.0
+      with:
+        artifacts: "SA-CHAOS.zip"
+        token: ${{ secrets.GITHUB_TOKEN }}
