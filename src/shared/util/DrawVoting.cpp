@@ -4,11 +4,13 @@
 #include "util/Config.h"
 #include "util/Globals.h"
 
-static const float TEXT_SCALE_X = 0.6f;
-static const float TEXT_SCALE_Y = 0.8f;
+static const float TEXT_SCALE_X = (float) CONFIG ("Drawing.VoteFontWidth", 0.6);
+static const float TEXT_SCALE_Y = (float) CONFIG ("Drawing.VoteFontHeight", 0.8);
 
-static const float SUBTEXT_SCALE_X = 0.4f;
-static const float SUBTEXT_SCALE_Y = 0.6f;
+static const float SUBTEXT_SCALE_X = (float) CONFIG ("Drawing.VoteSubTextFontWidth", 0.4);
+static const float SUBTEXT_SCALE_Y = (float) CONFIG ("Drawing.VoteSubTextFontHeight", 0.6);
+
+static const float BAR_SIZE = CONFIG ("Drawing.BarWidth", 200.0);
 
 void
 DrawVoting::DrawVotes ()

@@ -149,6 +149,46 @@ EffectsTopToBottom = true
 # Default: false
 DrawVotesOnTop = true
 
+# Will change the width of font size
+# Default: 0.6
+EffectFontWidth = 0.6
+
+# Will change the height of font size
+# Default: 0.8
+EffectFontHeight = 0.8
+
+# Will change the width of font size for subtext
+# Default: 0.4
+EffectSubTextFontWidth = 0.4
+
+# Will change the height of font size for subtext
+# Default: 0.6
+EffectSubTextFontHeight = 0.6
+
+# Will change the line spacing between effects
+# Default: 45.0
+EffectYSpacing = 45.0
+
+# Will change the width of font size for voting
+# Default: 0.6
+VoteFontWidth = 0.6
+
+# Will change the height of font size for voting
+# Default: 0.8
+VoteFontHeight = 0.8
+
+# Will change the width of font size for subtext in voting
+# Default: 0.4
+VoteSubTextFontWidth = 0.4
+
+# Will change the height of font size for subtext in voting
+# Default: 0.6
+VoteSubTextFontHeight = 0.6
+
+# Will change the bar size
+# Default: 200.0
+BarWidth = 200.0
+
 #######################################################
 
 #######################################################

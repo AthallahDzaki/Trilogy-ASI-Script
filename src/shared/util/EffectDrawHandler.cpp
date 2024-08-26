@@ -18,13 +18,13 @@
 #include <CFont.h>
 #include <extensions/FontPrint.h>
 
-static const float TEXT_SCALE_X = 0.6f;
-static const float TEXT_SCALE_Y = 0.8f;
+static const float TEXT_SCALE_X = (float) CONFIG ("Drawing.EffectFontWidth", 0.6);
+static const float TEXT_SCALE_Y = (float) CONFIG ("Drawing.EffectFontHeight", 0.8);
 
-static const float SUBTEXT_SCALE_X = 0.4f;
-static const float SUBTEXT_SCALE_Y = 0.6f;
+static const float SUBTEXT_SCALE_X = (float) CONFIG ("Drawing.EffectSubTextFontWidth", 0.6);
+static const float SUBTEXT_SCALE_Y = (float) CONFIG ("Drawing.EffectSubTextFontHeight", 0.4);
 
-static const float Y_SPACING = 45.0f;
+static const float Y_SPACING = (float) CONFIG ("Drawing.EffectYSpacing", 45.0);
 
 bool
 EffectDrawHandler::AreEffectsInset (bool checkOneTimeEffects)

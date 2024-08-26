@@ -4,6 +4,7 @@
 #include "util/EffectDatabase.h"
 #include "util/EffectInstance.h"
 #include "util/GameUtil.h"
+#include "util/Globals.h"
 
 #include <bitset>
 #include <set>
@@ -88,7 +89,7 @@ public:
     virtual bool
     CanTickDown_Internal (EffectInstance *instance)
     {
-        if (!CONFIG ("Chaos.AlwaysCountDownEffects", false)
+        if (!CONFIG ("Chaos.AlwaysCountDownEffects", false) && !Globals::enabledEffects["effect_random_cutscene"]
             || CONFIG_CC_ENABLED)
         {
             if (GameUtil::IsCutsceneProcessing ()) return false;
