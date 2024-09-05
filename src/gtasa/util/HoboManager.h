@@ -155,7 +155,7 @@ public:
 
             ini["Hobo" + std::to_string (i)]["Type"] = std::to_string (Type);
             ini["Hobo" + std::to_string (i)]["Alive"]
-                = std::to_string (ped->m_nPedState != PEDSTATE_DIE);
+                = std::to_string (ped-> m_ePedState != PEDSTATE_DIE);
             ini["Hobo" + std::to_string (i)]["Weapon"]
                 = std::to_string (weaponType);
             ini["Hobo" + std::to_string (i)]["Health"]
@@ -193,6 +193,7 @@ public:
             CWorld::Add (ped);
             ped->m_nWeaponShootingRate = 99999;
             ped->m_nWeaponAccuracy     = 99999;
+            ped->m_pIntelligence->SetHearingRange (99999.0f); // This ped can hear everything
             ped->m_fHealth             = hoboType == 3 ? 5000.0f : 1000.0f;
 
             // Only Explosion and Ramp can kill normal hobo
@@ -219,7 +220,7 @@ public:
             CStreaming::SetModelIsDeletable (model);
 
             ped->PositionAnyPedOutOfCollision ();
-            Command<eScriptCommands::COMMAND_SET_CHAR_RELATIONSHIP> (
+            Command<Commands::SET_CHAR_RELATIONSHIP> (
                 ped, 4, ePedType::PED_TYPE_PLAYER1);
         }
         return ped;
@@ -255,7 +256,7 @@ private:
     {
         if (ped)
         {
-            Command<eScriptCommands::COMMAND_REMOVE_CHAR_ELEGANTLY> (ped);
+            Command<Commands::REMOVE_CHAR_ELEGANTLY> (ped);
             angryHobo.erase (
                 std::remove_if (angryHobo.begin (), angryHobo.end (),
                                 [ped] (std::tuple<CPed *, int, eWeaponType> &t)

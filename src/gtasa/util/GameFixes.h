@@ -75,10 +75,10 @@ public:
             = GenericUtil::ToUpper (std::string (thisScript->m_szName));
         if (missionName == "CESAR1")
         {
-            if (CTheScripts::ScriptParams[0].iParam == 0
-                && CTheScripts::ScriptParams[1].iParam == 0 && offset == 5098)
+            if (ScriptParams[0] == 0
+                && ScriptParams[1] == 0 && offset == 5098)
             {
-                CTheScripts::ScriptParams[1].iParam = 1;
+                ScriptParams[1] = 1;
             }
         }
 

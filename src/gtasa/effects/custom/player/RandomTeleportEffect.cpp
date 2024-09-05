@@ -41,7 +41,7 @@ public:
             = CVector (inst->Random (-3000.0f, 3000.0f),
                        inst->Random (-3000.0f, 3000.0f), 0.0f);
 
-        Command<eScriptCommands::COMMAND_REQUEST_COLLISION> (randomPosition.x,
+        Command<Commands::REQUEST_COLLISION> (randomPosition.x,
                                                              randomPosition.y);
         CStreaming::StreamZoneModels (&randomPosition);
         CStreaming::LoadAllRequestedModels (false);
@@ -57,7 +57,7 @@ public:
         if (!groundResult) return FindSuitableTeleportPosition (inst);
 
         float waterLevel = 0.0f;
-        Command<eScriptCommands::COMMAND_GET_WATER_HEIGHT_AT_COORDS> (
+        Command<Commands::GET_WATER_HEIGHT_AT_COORDS> (
             randomPosition.x, randomPosition.y, false, &waterLevel);
 
         if (randomPosition.z <= waterLevel)

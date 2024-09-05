@@ -37,7 +37,7 @@ public:
         {
             timesAttempted = 0;
 
-            Command<eScriptCommands::COMMAND_SET_CHAR_HEALTH> (player, 0);
+            Command<Commands::SET_CHAR_HEALTH> (player, 0);
         }
         else if (timesAttempted >= 5)
         {

@@ -59,7 +59,7 @@ public:
                 int randomMoney = 1000 * inst->Random (5, 25);
 
                 Command<Commands::CLEAR_SMALL_PRINTS> ();
-                Command<eScriptCommands::COMMAND_PRINT_WITH_NUMBER_BIG> (
+                Command<Commands::PRINT_WITH_NUMBER_BIG> (
                     "M_PASSS", randomMoney, 5000, 1);
                 Command<Commands::PLAY_MISSION_PASSED_TUNE> (1);
 
@@ -124,13 +124,13 @@ public:
         CPlayerPed *player = FindPlayerPed ();
         if (!player) return;
 
-        Command<eScriptCommands::COMMAND_SKIP_CUTSCENE_END> ();
-        Command<eScriptCommands::COMMAND_CLEAR_CHAR_TASKS> (player);
-        Command<eScriptCommands::COMMAND_SET_CAMERA_BEHIND_PLAYER> ();
-        Command<eScriptCommands::COMMAND_SWITCH_WIDESCREEN> (0);
-        Command<eScriptCommands::COMMAND_SET_PLAYER_CONTROL> (0, 1);
-        Command<eScriptCommands::COMMAND_RESTORE_CAMERA_JUMPCUT> ();
-        Command<eScriptCommands::COMMAND_DETACH_CHAR_FROM_CAR> (player);
+        Command<Commands::SKIP_CUTSCENE_END> ();
+        Command<Commands::CLEAR_CHAR_TASKS> (player);
+        Command<Commands::SET_CAMERA_BEHIND_PLAYER> ();
+        Command<Commands::SWITCH_WIDESCREEN> (0);
+        Command<Commands::SET_PLAYER_CONTROL> (0, 1);
+        Command<Commands::RESTORE_CAMERA_JUMPCUT> ();
+        Command<Commands::DETACH_CHAR_FROM_CAR> (player);
     }
 };
 

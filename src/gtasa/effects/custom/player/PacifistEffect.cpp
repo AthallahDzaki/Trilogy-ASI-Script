@@ -34,7 +34,7 @@ public:
             && (thisCalc->m_pDamager == player
                 || thisCalc->m_pDamager == FindPlayerVehicle (-1, false)))
         {
-            Command<eScriptCommands::COMMAND_SET_CHAR_HEALTH> (player, 0);
+            Command<Commands::SET_CHAR_HEALTH> (player, 0);
         }
     }
 };

@@ -43,17 +43,17 @@ public:
     Hooked_GetPositionOfAnalogueSticks (auto &&cb, CRunningScript *script,
                                         __int16 count)
     {
-        if (CTheScripts::ScriptParams[0].iParam != 0)
-            CTheScripts::ScriptParams[0].iParam *= -1;
+        if (ScriptParams[0] != 0)
+            ScriptParams[0] *= -1;
 
-        if (CTheScripts::ScriptParams[1].iParam != 0)
-            CTheScripts::ScriptParams[1].iParam *= -1;
+        if (ScriptParams[1] != 0)
+            ScriptParams[1] *= -1;
 
-        if (CTheScripts::ScriptParams[2].iParam != 0)
-            CTheScripts::ScriptParams[2].iParam *= -1;
+        if (ScriptParams[2] != 0)
+            ScriptParams[2] *= -1;
 
-        if (CTheScripts::ScriptParams[3].iParam != 0)
-            CTheScripts::ScriptParams[3].iParam *= -1;
+        if (ScriptParams[3] != 0)
+            ScriptParams[3] *= -1;
 
         cb ();
     }

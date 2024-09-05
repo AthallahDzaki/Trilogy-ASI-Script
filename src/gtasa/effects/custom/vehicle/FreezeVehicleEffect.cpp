@@ -19,7 +19,7 @@ public:
         CVehicle *vehicle = FindPlayerVehicle (-1, false);
         if (!vehicle) return false;
 
-        if (Command<eScriptCommands::COMMAND_IS_RECORDING_GOING_ON_FOR_CAR> (
+        if (Command<Commands::IS_RECORDING_GOING_ON_FOR_CAR> (
                 vehicle))
             return false;
 

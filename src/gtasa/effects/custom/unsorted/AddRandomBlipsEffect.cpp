@@ -16,7 +16,7 @@ public:
             float y      = inst->Random (-3000.0f, 3000.0f);
             int   sprite = inst->Random (2, 63);
 
-            Command<eScriptCommands::COMMAND_ADD_SPRITE_BLIP_FOR_COORD> (
+            Command<Commands::ADD_SPRITE_BLIP_FOR_COORD> (
                 x, y, 0.0f, sprite);
         }
     }

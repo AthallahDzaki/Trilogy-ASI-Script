@@ -16,13 +16,13 @@ public:
     void
     OnEnd (EffectInstance *inst) override
     {
-        Command<eScriptCommands::COMMAND_SET_CINEMA_CAMERA> (false);
+        Command<Commands::SET_CINEMA_CAMERA> (false);
     }
 
     void
     OnTick (EffectInstance *inst) override
     {
-        Command<eScriptCommands::COMMAND_SET_CINEMA_CAMERA> (
+        Command<Commands::SET_CINEMA_CAMERA> (
             FindPlayerVehicle (-1, false) != nullptr);
     }
 };

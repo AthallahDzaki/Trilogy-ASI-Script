@@ -71,7 +71,7 @@ public:
         {
             int sec
                 = inst->Random (MIN_COUGH_TIME_SEC, MAX_COUGH_TIME_SEC) * 1000;
-            Command<eScriptCommands::COMMAND_TASK_PLAY_ANIM_NON_INTERRUPTABLE> (
+            Command<Commands::TASK_PLAY_ANIM_NON_INTERRUPTABLE> (
                 ped, "gas_cwr", "ped", 4.0, 1, 1, 1, 0, sec);
         }
         ped->m_fHealth -= ped->m_fMaxHealth * 0.02f;
@@ -79,7 +79,7 @@ public:
 
         int res        = 0;
         int speechBank = 340;
-        Command<eScriptCommands::COMMAND_SET_CHAR_SAY_CONTEXT_IMPORTANT> (
+        Command<Commands::SET_CHAR_SAY_CONTEXT_IMPORTANT> (
             ped, speechBank, 1, 1, 1 & res);
     }
 };

@@ -21,7 +21,7 @@ public:
     {
         for (const auto &garage : garages)
         {
-            Command<eScriptCommands::COMMAND_CHANGE_GARAGE_TYPE> (
+            Command<Commands::CHANGE_GARAGE_TYPE> (
                 garage.first.data (), 0);
         }
     }
@@ -31,7 +31,7 @@ public:
     {
         for (const auto &garage : garages)
         {
-            Command<eScriptCommands::COMMAND_CHANGE_GARAGE_TYPE> (
+            Command<Commands::CHANGE_GARAGE_TYPE> (
                 garage.first.data (), garage.second);
         }
     }

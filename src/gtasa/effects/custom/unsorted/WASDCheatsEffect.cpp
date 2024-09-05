@@ -168,7 +168,7 @@ std::vector<std::function<void (EffectInstance *)>> customCheats = {
             if (!ped) continue;
             if (ped == player) continue;
 
-            Command<eScriptCommands::COMMAND_SET_CHAR_RELATIONSHIP> (
+            Command<Commands::SET_CHAR_RELATIONSHIP> (
                 ped, 4, ePedType::PED_TYPE_PLAYER1);
             auto weapon
                 = weapons[inst->Random (0, 100000) % std::size (weapons)];
@@ -178,11 +178,11 @@ std::vector<std::function<void (EffectInstance *)>> customCheats = {
             CStreaming::LoadAllRequestedModels (false);
             CStreaming::SetModelIsDeletable (m);
 
-            Command<eScriptCommands::COMMAND_GIVE_WEAPON_TO_CHAR> (ped, weapon,
+            Command<Commands::GIVE_WEAPON_TO_CHAR> (ped, weapon,
                                                                    1);
-            Command<eScriptCommands::COMMAND_SET_CURRENT_CHAR_WEAPON> (ped,
+            Command<Commands::SET_CURRENT_CHAR_WEAPON> (ped,
                                                                        weapon);
-            Command<eScriptCommands::COMMAND_TASK_KILL_CHAR_ON_FOOT> (ped,
+            Command<Commands::TASK_KILL_CHAR_ON_FOOT> (ped,
                                                                       player);
         }
     },
@@ -199,7 +199,7 @@ std::vector<std::function<void (EffectInstance *)>> customCheats = {
         {
             explostionType = 0;
         }
-        Command<eScriptCommands::COMMAND_ADD_EXPLOSION> (p.x, p.y, p.z,
+        Command<Commands::ADD_EXPLOSION> (p.x, p.y, p.z,
                                                          explostionType);
     }};
 
@@ -243,7 +243,7 @@ public:
         {
             if (isWASDTyped ())
             {
-                Command<eScriptCommands::COMMAND_PRINT_HELP> ("CHEAT1");
+                Command<Commands::PRINT_HELP> ("CHEAT1");
                 int cheat = inst->Random (0, 100000) % customCheats.size ();
                 customCheats[cheat](inst);
             }

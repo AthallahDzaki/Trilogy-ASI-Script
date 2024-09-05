@@ -26,7 +26,7 @@ public:
         int model = 708; // Tree
         CStreaming::RequestModel (model, 2);
         CStreaming::LoadAllRequestedModels (false);
-        Command<eScriptCommands::COMMAND_CREATE_OBJECT> (model, position.x,
+        Command<Commands::CREATE_OBJECT> (model, position.x,
                                                          position.y, position.z,
                                                          &treeObject);
         CStreaming::SetModelIsDeletable (model);

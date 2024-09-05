@@ -7,7 +7,7 @@ class FramerateEffect : public EffectBase
     int oldFramerate = 25;
     int framerate    = 25;
 
-    bool oldFrameLimiter = false;
+    bool oldVSync = false;
 
 public:
     FramerateEffect (int framerate) : EffectBase ()
@@ -21,21 +21,21 @@ public:
         inst->WriteMemory<byte> (0x53E94C, 0);
 
         this->oldFramerate    = RsGlobal.maxFPS;
-        this->oldFrameLimiter = FrontEndMenuManager.m_bFrameLimiterOn;
+        this->oldVSync        = FrontEndMenuManager.m_bPrefsVsync;
     }
 
     void
     OnEnd (EffectInstance *inst) override
     {
         RsGlobal.maxFPS                       = this->oldFramerate;
-        FrontEndMenuManager.m_bFrameLimiterOn = this->oldFrameLimiter;
+        FrontEndMenuManager.m_bPrefsVsync     = this->oldVSync;
     }
 
     void
     OnTick (EffectInstance *inst) override
     {
         RsGlobal.maxFPS                       = this->framerate;
-        FrontEndMenuManager.m_bFrameLimiterOn = true;
+        FrontEndMenuManager.m_bPrefsVsync     = true;
     }
 };
 

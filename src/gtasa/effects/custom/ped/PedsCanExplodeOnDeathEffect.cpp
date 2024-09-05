@@ -35,7 +35,7 @@ public:
         if ((randomValue % 3 == 0) && ped->m_fHealth <= 0.0f)
         {
             auto p = ped->GetPosition ();
-            Command<eScriptCommands::COMMAND_ADD_EXPLOSION> (p.x, p.y, p.z, 11);
+            Command<Commands::ADD_EXPLOSION> (p.x, p.y, p.z, 11);
         }
     }
 

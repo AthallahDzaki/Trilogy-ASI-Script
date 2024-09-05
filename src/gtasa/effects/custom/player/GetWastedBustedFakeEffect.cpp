@@ -33,12 +33,12 @@ public:
 
         std::string msg (type == FakeEffectType::WASTED ? "DEAD" : "BUSTED");
         Command<Commands::CLEAR_SMALL_PRINTS> ();
-        Command<eScriptCommands::COMMAND_PRINT_BIG> (msg.data (), FADE_IN_TIME,
+        Command<Commands::PRINT_BIG> (msg.data (), FADE_IN_TIME,
                                                      3);
 
         if (CTheScripts::IsPlayerOnAMission ())
         {
-            Command<eScriptCommands::COMMAND_PRINT_BIG> ("M_FAIL", FADE_IN_TIME,
+            Command<Commands::PRINT_BIG> ("M_FAIL", FADE_IN_TIME,
                                                          1);
         }
 
@@ -48,14 +48,14 @@ public:
         if (!player) return;
 
         int mode = (type == FakeEffectType::WASTED ? 29 : 32);
-        Command<eScriptCommands::COMMAND_POINT_CAMERA_AT_CHAR> (player, mode,
+        Command<Commands::POINT_CAMERA_AT_CHAR> (player, mode,
                                                                 2);
 
         if (type == FakeEffectType::BUSTED)
         {
             int res        = 0;
             int speechBank = 15;
-            Command<eScriptCommands::COMMAND_SET_CHAR_SAY_CONTEXT> (player,
+            Command<Commands::SET_CHAR_SAY_CONTEXT> (player,
                                                                     speechBank,
                                                                     &res);
         }
@@ -78,11 +78,11 @@ public:
         {
             if (CTheScripts::IsPlayerOnAMission ())
             {
-                Command<eScriptCommands::COMMAND_CLEAR_THIS_PRINT_BIG_NOW> (1);
+                Command<Commands::CLEAR_THIS_PRINT_BIG_NOW> (1);
             }
-            Command<eScriptCommands::COMMAND_CLEAR_THIS_PRINT_BIG_NOW> (3);
+            Command<Commands::CLEAR_THIS_PRINT_BIG_NOW> (3);
 
-            Command<eScriptCommands::COMMAND_RESTORE_CAMERA> ();
+            Command<Commands::RESTORE_CAMERA> ();
 
             TheCamera.Fade (FADE_OUT_TIME_FLOAT, 1);            
 

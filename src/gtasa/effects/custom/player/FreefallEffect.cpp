@@ -44,7 +44,7 @@ public:
 
         Teleportation::Teleport (position);
 
-        Command<eScriptCommands::COMMAND_RESTORE_CAMERA_JUMPCUT> ();
+        Command<Commands::RESTORE_CAMERA_JUMPCUT> ();
 
         inst->Disable ();
     }

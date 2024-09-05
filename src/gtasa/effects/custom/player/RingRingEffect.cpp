@@ -29,7 +29,7 @@ public:
         CPlayerPed *player = FindPlayerPed ();
         if (!player) return;
 
-        Command<eScriptCommands::COMMAND_TASK_USE_MOBILE_PHONE> (player, false);
+        Command<Commands::TASK_USE_MOBILE_PHONE> (player, false);
     }
 
     void
@@ -52,7 +52,7 @@ public:
 
         CStreaming::SetModelIsDeletable (330);
 
-        Command<eScriptCommands::COMMAND_TASK_USE_MOBILE_PHONE> (
+        Command<Commands::TASK_USE_MOBILE_PHONE> (
             FindPlayerPed (), true);
 
         wait = 1000;

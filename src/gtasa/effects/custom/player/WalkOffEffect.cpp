@@ -30,7 +30,7 @@ public:
         CPlayerPed *player = FindPlayerPed ();
         if (!player) return;
 
-        Command<eScriptCommands::COMMAND_CLEAR_CHAR_TASKS_IMMEDIATELY> (player);
+        Command<Commands::CLEAR_CHAR_TASKS_IMMEDIATELY> (player);
 
         CPad *pad = player->GetPadFromPlayer ();
         if (pad) pad->DisablePlayerControls = false;
@@ -49,7 +49,7 @@ public:
             = player->m_pIntelligence->FindTaskByType (TASK_COMPLEX_WANDER);
         if (!task && GameUtil::IsPlayerSafe ())
         {
-            Command<eScriptCommands::COMMAND_TASK_WANDER_STANDARD> (player);
+            Command<Commands::TASK_WANDER_STANDARD> (player);
             wait = 500;
         }
 

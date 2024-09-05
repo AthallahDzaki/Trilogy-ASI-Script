@@ -257,7 +257,7 @@ private:
     Hooked_ProcessMenuOptions (auto &&cb, CMenuManager *thisManager,
                                eMenuPage page)
     {
-        if (page == eMenuPage::MENUPAGE_LOAD_GAME)
+        if (page == eMenuPage::MENUPAGE_CHOOSE_LOAD_SLOT)
         {
             if (KeyPressed (VK_CONTROL))
             {
@@ -396,7 +396,7 @@ private:
             object->m_pObjectInfo->m_fColDamageMultiplier = 0.5f;
 
             if (object->m_fHealth <= 0.0f)
-                Command<eScriptCommands::COMMAND_DELETE_OBJECT> (object);
+                Command<Commands::DELETE_OBJECT> (object);
         }
     }
 

@@ -20,8 +20,7 @@ public:
     {
         for (CVehicle *vehicle : CPools::ms_pVehiclePool)
         {
-            Command<eScriptCommands::
-                        COMMAND_SET_VEHICLE_AIR_RESISTANCE_MULTIPLIER> (vehicle,
+            Command<Commands::SET_VEHICLE_AIR_RESISTANCE_MULTIPLIER> (vehicle,
                                                                         0.0f);
         }
 
@@ -40,8 +39,7 @@ public:
                 || vehicle->m_nVehicleSubClass == VEHICLE_FPLANE)
                 continue;
 
-            Command<eScriptCommands::
-                        COMMAND_SET_VEHICLE_AIR_RESISTANCE_MULTIPLIER> (vehicle,
+            Command<Commands::SET_VEHICLE_AIR_RESISTANCE_MULTIPLIER> (vehicle,
                                                                         10.0f);
         }
     }

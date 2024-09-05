@@ -86,7 +86,7 @@ public:
     {
         if (raster) RwRasterDestroy (raster);
 
-        auto cameraRaster = Scene.m_pRwCamera->frameBuffer;
+        auto cameraRaster = Scene.m_pCamera->frameBuffer;
         raster
             = RwRasterCreate (cameraRaster->width, cameraRaster->height,
                               cameraRaster->depth, rwRASTERTYPECAMERATEXTURE);
@@ -168,11 +168,11 @@ public:
 
         SetRenderState (rwRENDERSTATESHADEMODE, rwSHADEMODEFLAT);
 
-        RwCameraEndUpdate (Scene.m_pRwCamera);
+        RwCameraEndUpdate (Scene.m_pCamera);
         RwRasterPushContext (raster);
-        RwRasterRenderFast (Scene.m_pRwCamera->frameBuffer, 0, 0);
+        RwRasterRenderFast (Scene.m_pCamera->frameBuffer, 0, 0);
         RwRasterPopContext ();
-        RwCameraBeginUpdate (Scene.m_pRwCamera);
+        RwCameraBeginUpdate (Scene.m_pCamera);
 
         SetRenderState (rwRENDERSTATETEXTURERASTER, (int) raster);
 
@@ -199,22 +199,22 @@ public:
     Hooked_GetPositionOfAnalogueSticks (auto &&cb, CRunningScript *script,
                                         __int16 count)
     {
-        if (CTheScripts::ScriptParams[2].iParam != 0)
-            CTheScripts::ScriptParams[2].iParam *= -1;
+        if (ScriptParams[2] != 0)
+            ScriptParams[2] *= -1;
 
         std::string missionName (script->m_szName);
 
         if (missionName == "plchute" || missionName == "parach")
         {
-            if (CTheScripts::ScriptParams[0].iParam != 0)
-                CTheScripts::ScriptParams[0].iParam *= -1;
+            if (ScriptParams[0] != 0)
+                ScriptParams[0] *= -1;
         }
 
         if (missionName == "lowgame")
         {
             // Revert the on-screen controls for the minigame again
-            if (CTheScripts::ScriptParams[2].iParam != 0)
-                CTheScripts::ScriptParams[2].iParam *= -1;
+            if (ScriptParams[2] != 0)
+                ScriptParams[2] *= -1;
         }
 
         cb ();

@@ -37,7 +37,7 @@ public:
         {
             auto clothes = GetRandomCRCForComponent (inst, i);
 
-            Command<eScriptCommands::COMMAND_GIVE_PLAYER_CLOTHES> (
+            Command<Commands::GIVE_PLAYER_CLOTHES> (
                 0, clothes.second, clothes.first, i);
         }
 

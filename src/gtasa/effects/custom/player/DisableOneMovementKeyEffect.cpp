@@ -83,26 +83,26 @@ public:
         {
             case UP:
             {
-                CTheScripts::ScriptParams[1].iParam
-                    = std::max (0, CTheScripts::ScriptParams[1].iParam);
+                ScriptParams[1]
+                    = std::max (0, ScriptParams[1]);
                 break;
             }
             case DOWN:
             {
-                CTheScripts::ScriptParams[1].iParam
-                    = std::min (0, CTheScripts::ScriptParams[1].iParam);
+                ScriptParams[1]
+                    = std::min (0, ScriptParams[1]);
                 break;
             }
             case LEFT:
             {
-                CTheScripts::ScriptParams[0].iParam
-                    = std::max (0, CTheScripts::ScriptParams[0].iParam);
+                ScriptParams[0]
+                    = std::max (0, ScriptParams[0]);
                 break;
             }
             case RIGHT:
             {
-                CTheScripts::ScriptParams[0].iParam
-                    = std::min (0, CTheScripts::ScriptParams[0].iParam);
+                ScriptParams[0]
+                    = std::min (0, ScriptParams[0]);
                 break;
             }
             default: break;

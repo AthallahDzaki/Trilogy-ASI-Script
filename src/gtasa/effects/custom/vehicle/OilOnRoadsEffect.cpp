@@ -110,7 +110,7 @@ struct OilSpot
                                         / DISAPPEAR_TIME));
         }
 
-        Command<eScriptCommands::COMMAND_DRAW_SHADOW> (6, pos.x, pos.y, pos.z,
+        Command<Commands::DRAW_SHADOW> (6, pos.x, pos.y, pos.z,
                                                        angle, radius, alpha, 0,
                                                        0, 0);
     }

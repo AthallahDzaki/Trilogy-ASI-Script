@@ -70,10 +70,10 @@ public:
     Hooked_GetPositionOfAnalogueSticks (auto &&cb, CRunningScript *script,
                                         __int16 count)
     {
-        CTheScripts::ScriptParams[0].iParam = 0;
-        CTheScripts::ScriptParams[1].iParam = 0;
-        CTheScripts::ScriptParams[2].iParam = 0;
-        CTheScripts::ScriptParams[3].iParam = 0;
+        ScriptParams[0] = 0;
+        ScriptParams[1] = 0;
+        ScriptParams[2] = 0;
+        ScriptParams[3] = 0;
 
         if (bufferedInputData.size () > 0)
         {
@@ -83,10 +83,10 @@ public:
 
             if (timeInMs > data.timeInMs)
             {
-                CTheScripts::ScriptParams[0].iParam = data.state.LeftStickX;
-                CTheScripts::ScriptParams[1].iParam = data.state.LeftStickY;
-                CTheScripts::ScriptParams[2].iParam = data.state.RightStickX;
-                CTheScripts::ScriptParams[3].iParam = data.state.RightStickY;
+                ScriptParams[0] = data.state.LeftStickX;
+                ScriptParams[1] = data.state.LeftStickY;
+                ScriptParams[2] = data.state.RightStickX;
+                ScriptParams[3] = data.state.RightStickY;
             }
         }
 

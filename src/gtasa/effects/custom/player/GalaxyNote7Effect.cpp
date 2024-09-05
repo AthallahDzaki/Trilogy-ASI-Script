@@ -56,13 +56,13 @@ public:
         wait -= (int) GenericUtil::CalculateTick (CTimer::ms_fTimeScale);
         if (wait > 0) return;
 
-        Command<eScriptCommands::COMMAND_CLEAR_CHAR_TASKS_IMMEDIATELY> (player);
+        Command<Commands::CLEAR_CHAR_TASKS_IMMEDIATELY> (player);
 
         CVector position = player->GetPosition ();
-        Command<eScriptCommands::COMMAND_ADD_EXPLOSION> (position.x, position.y,
+        Command<Commands::ADD_EXPLOSION> (position.x, position.y,
                                                          position.z, 0);
 
-        Command<eScriptCommands::COMMAND_SET_CHAR_HEALTH> (player, 0);
+        Command<Commands::SET_CHAR_HEALTH> (player, 0);
 
         inst->Disable ();
     }

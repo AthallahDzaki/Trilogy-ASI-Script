@@ -25,7 +25,7 @@ public:
         CVehicle *vehicle = FindPlayerVehicle (-1, false);
         if (!vehicle) return;
 
-        Command<eScriptCommands::COMMAND_TASK_LEAVE_CAR_IMMEDIATELY> (player,
+        Command<Commands::TASK_LEAVE_CAR_IMMEDIATELY> (player,
                                                                       vehicle);
         if (CTheScripts::IsPlayerOnAMission ()) return;
 

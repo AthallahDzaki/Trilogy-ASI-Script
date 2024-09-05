@@ -230,11 +230,9 @@ public:
                     if (missionName == "FINALEC")
                     {
                         // End Of The Line (Part 3)
-                        Command<eScriptCommands::COMMAND_SET_LA_RIOTS> (0);
-                        Command<eScriptCommands::
-                                    COMMAND_SET_CAR_DENSITY_MULTIPLIER> (1.0f);
-                        Command<eScriptCommands::
-                                    COMMAND_SET_PED_DENSITY_MULTIPLIER> (1.0f);
+                        Command<Commands::SET_LA_RIOTS> (0);
+                        Command<Commands::SET_CAR_DENSITY_MULTIPLIER> (1.0f);
+                        Command<Commands::SET_PED_DENSITY_MULTIPLIER> (1.0f);
                     }
 
                     break;
@@ -244,15 +242,15 @@ public:
                     // High Stakes, Low-Rider before getting into the race
                     ClearPlayerStatus ();
 
-                    Command<eScriptCommands::COMMAND_FAIL_CURRENT_MISSION> ();
-                    Command<eScriptCommands::COMMAND_REMOVE_BLIP> (
+                    Command<Commands::FAIL_CURRENT_MISSION> ();
+                    Command<Commands::REMOVE_BLIP> (
                         GameUtil::GetGlobalVariable<int> (440));
                     int &lowriderPassed
                         = GameUtil::GetGlobalVariable<int> (457);
                     lowriderPassed += 1;
 
                     Command<Commands::CLEAR_SMALL_PRINTS> ();
-                    Command<eScriptCommands::COMMAND_PRINT_WITH_NUMBER_BIG> (
+                    Command<Commands::PRINT_WITH_NUMBER_BIG> (
                         "M_PASSS", 1000, 5000, 1);
                     Command<Commands::PLAY_MISSION_PASSED_TUNE> (1);
 
@@ -274,8 +272,8 @@ public:
                         i->m_pCurrentIP = i->m_pBaseIP + 19649;
 
                         Command<
-                            eScriptCommands::COMMAND_FAIL_CURRENT_MISSION> ();
-                        Command<eScriptCommands::COMMAND_REMOVE_BLIP> (
+                            Commands::FAIL_CURRENT_MISSION> ();
+                        Command<Commands::REMOVE_BLIP> (
                             GameUtil::GetGlobalVariable<int> (440));
                         int &lowriderPassed
                             = GameUtil::GetGlobalVariable<int> (457);
@@ -283,7 +281,7 @@ public:
 
                         Command<Commands::CLEAR_SMALL_PRINTS> ();
                         Command<
-                            eScriptCommands::COMMAND_PRINT_WITH_NUMBER_BIG> (
+                            Commands::PRINT_WITH_NUMBER_BIG> (
                             "M_PASSS", 1000, 5000, 1);
                         Command<Commands::PLAY_MISSION_PASSED_TUNE> (1);
 
@@ -304,13 +302,13 @@ public:
                         bcesarMissionsPassed = 5;
 
                         Command<
-                            eScriptCommands::COMMAND_FAIL_CURRENT_MISSION> ();
-                        Command<eScriptCommands::COMMAND_REMOVE_BLIP> (
+                            Commands::FAIL_CURRENT_MISSION> ();
+                        Command<Commands::REMOVE_BLIP> (
                             GameUtil::GetGlobalVariable<int> (485));
 
                         Command<Commands::CLEAR_SMALL_PRINTS> ();
                         Command<
-                            eScriptCommands::COMMAND_PRINT_WITH_NUMBER_BIG> (
+                            Commands::PRINT_WITH_NUMBER_BIG> (
                             "M_PASSD", 3, 5000, 1);
                         Command<Commands::PLAY_MISSION_PASSED_TUNE> (1);
 
@@ -327,13 +325,13 @@ public:
                         bcesarMissionsPassed = 10;
 
                         Command<
-                            eScriptCommands::COMMAND_FAIL_CURRENT_MISSION> ();
-                        Command<eScriptCommands::COMMAND_REMOVE_BLIP> (
+                            Commands::FAIL_CURRENT_MISSION> ();
+                        Command<Commands::REMOVE_BLIP> (
                             GameUtil::GetGlobalVariable<int> (485));
 
                         Command<Commands::CLEAR_SMALL_PRINTS> ();
                         Command<
-                            eScriptCommands::COMMAND_PRINT_WITH_NUMBER_BIG> (
+                            Commands::PRINT_WITH_NUMBER_BIG> (
                             "M_PASSD", 3, 5000, 1);
                         Command<Commands::PLAY_MISSION_PASSED_TUNE> (1);
 
@@ -369,13 +367,13 @@ public:
         CPlayerPed *player = FindPlayerPed ();
         if (!player) return;
 
-        Command<eScriptCommands::COMMAND_SKIP_CUTSCENE_END> ();
-        Command<eScriptCommands::COMMAND_CLEAR_CHAR_TASKS> (player);
-        Command<eScriptCommands::COMMAND_SET_CAMERA_BEHIND_PLAYER> ();
-        Command<eScriptCommands::COMMAND_SWITCH_WIDESCREEN> (0);
-        Command<eScriptCommands::COMMAND_SET_PLAYER_CONTROL> (0, 1);
-        Command<eScriptCommands::COMMAND_RESTORE_CAMERA_JUMPCUT> ();
-        Command<eScriptCommands::COMMAND_DETACH_CHAR_FROM_CAR> (player);
+        Command<Commands::SKIP_CUTSCENE_END> ();
+        Command<Commands::CLEAR_CHAR_TASKS> (player);
+        Command<Commands::SET_CAMERA_BEHIND_PLAYER> ();
+        Command<Commands::SWITCH_WIDESCREEN> (0);
+        Command<Commands::SET_PLAYER_CONTROL> (0, 1);
+        Command<Commands::RESTORE_CAMERA_JUMPCUT> ();
+        Command<Commands::DETACH_CHAR_FROM_CAR> (player);
     }
 
     static char

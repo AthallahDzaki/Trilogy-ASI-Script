@@ -82,7 +82,7 @@ public:
             ammo = 250;
         }
 
-        Command<eScriptCommands::COMMAND_GIVE_WEAPON_TO_CHAR> (player,
+        Command<Commands::GIVE_WEAPON_TO_CHAR> (player,
                                                                weaponType,
                                                                ammo);
 

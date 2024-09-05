@@ -35,7 +35,7 @@ public:
     void
     OnProcessScripts (EffectInstance *inst) override
     {
-        Command<eScriptCommands::COMMAND_DELETE_CAR> (vehicle);
+        Command<Commands::DELETE_CAR> (vehicle);
 
         inst->Disable ();
     }
@@ -45,8 +45,7 @@ public:
     {
         if (vehicle->m_pDriver)
         {
-            Command<eScriptCommands::
-                        COMMAND_REMOVE_CHAR_FROM_CAR_MAINTAIN_POSITION> (
+            Command<Commands::REMOVE_CHAR_FROM_CAR_MAINTAIN_POSITION> (
                 vehicle->m_pDriver, vehicle);
         }
 
@@ -54,8 +53,7 @@ public:
         {
             if (!ped) continue;
 
-            Command<eScriptCommands::
-                        COMMAND_REMOVE_CHAR_FROM_CAR_MAINTAIN_POSITION> (
+            Command<Commands::REMOVE_CHAR_FROM_CAR_MAINTAIN_POSITION> (
                 ped, vehicle);
         }
     }

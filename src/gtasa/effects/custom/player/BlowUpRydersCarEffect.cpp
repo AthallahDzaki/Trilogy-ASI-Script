@@ -29,7 +29,7 @@ public:
     OnStart (EffectInstance *inst) override
     {
         if (IsVehiclePointerValid (rydersCar))
-            Command<eScriptCommands::COMMAND_DELETE_CAR> (rydersCar);
+            Command<Commands::DELETE_CAR> (rydersCar);
 
         rydersCar  = nullptr;
         teleported = false;
@@ -52,12 +52,12 @@ public:
         if (!rydersCar || !IsVehiclePointerValid (rydersCar)
             || rydersCar->m_nStatus != STATUS_WRECKED)
         {
-            Command<eScriptCommands::COMMAND_SET_CHAR_HEALTH> (player, 0);
+            Command<Commands::SET_CHAR_HEALTH> (player, 0);
             return;
         }
 
         Teleportation::Teleport (oldPosition);
-        Command<eScriptCommands::COMMAND_RESTORE_CAMERA_JUMPCUT> ();
+        Command<Commands::RESTORE_CAMERA_JUMPCUT> ();
 
         if (pistolAmmo > 0)
         {
@@ -111,15 +111,14 @@ public:
         CVehicle *playerVehicle = FindPlayerVehicle (-1, false);
         if (playerVehicle)
         {
-            Command<eScriptCommands::
-                        COMMAND_REMOVE_CHAR_FROM_CAR_MAINTAIN_POSITION> (
+            Command<Commands::REMOVE_CHAR_FROM_CAR_MAINTAIN_POSITION> (
                 player, playerVehicle);
         }
 
         Teleportation::Teleport (CVector (2476.56f, -1698.14f, 13.52f));
-        Command<eScriptCommands::COMMAND_SET_CHAR_ROTATION> (player, 0.0f, 0.0f,
+        Command<Commands::SET_CHAR_ROTATION> (player, 0.0f, 0.0f,
                                                              15.0f);
-        Command<eScriptCommands::COMMAND_RESTORE_CAMERA_JUMPCUT> ();
+        Command<Commands::RESTORE_CAMERA_JUMPCUT> ();
 
         rydersCar
             = GameUtil::CreateVehicle (600,

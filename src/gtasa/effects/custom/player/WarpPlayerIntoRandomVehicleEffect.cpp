@@ -43,16 +43,16 @@ public:
 
         for (int i = 0; i < vehicle->m_nMaxPassengers; i++)
         {
-            if (Command<eScriptCommands::COMMAND_IS_CAR_PASSENGER_SEAT_FREE> (
+            if (Command<Commands::IS_CAR_PASSENGER_SEAT_FREE> (
                     vehicle, i))
             {
                 vehicle->m_nVehicleFlags.bHasBeenOwnedByPlayer = true;
 
                 Command<
-                    eScriptCommands::COMMAND_WARP_CHAR_INTO_CAR_AS_PASSENGER> (
+                    Commands::WARP_CHAR_INTO_CAR_AS_PASSENGER> (
                     player, vehicle, i);
 
-                Command<eScriptCommands::COMMAND_RESTORE_CAMERA_JUMPCUT> ();
+                Command<Commands::RESTORE_CAMERA_JUMPCUT> ();
 
                 inst->Disable ();
             }

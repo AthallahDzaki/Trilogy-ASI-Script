@@ -32,7 +32,7 @@ public:
         int model = 955; // Sprunk Machine
         CStreaming::RequestModel (model, 2);
         CStreaming::LoadAllRequestedModels (false);
-        Command<eScriptCommands::COMMAND_CREATE_OBJECT> (model, position.x,
+        Command<Commands::CREATE_OBJECT> (model, position.x,
                                                          position.y, position.z,
                                                          &sprunkObject);
         CStreaming::SetModelIsDeletable (model);

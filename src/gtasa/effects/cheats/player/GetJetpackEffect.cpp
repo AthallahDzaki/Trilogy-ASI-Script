@@ -16,7 +16,7 @@ public:
 
         if (FindPlayerVehicle (-1, false)) return false;
 
-        if (Command<eScriptCommands::COMMAND_IS_PLAYER_USING_JETPACK> (0))
+        if (Command<Commands::IS_PLAYER_USING_JETPACK> (0))
             return false;
 
         return GameUtil::IsPlayerSafe ();
@@ -39,7 +39,7 @@ public:
             return;
         }
 
-        Command<eScriptCommands::COMMAND_TASK_JETPACK> (player);
+        Command<Commands::TASK_JETPACK> (player);
         inst->Disable ();
     }
 };

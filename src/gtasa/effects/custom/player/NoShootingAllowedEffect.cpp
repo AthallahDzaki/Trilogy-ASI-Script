@@ -47,7 +47,7 @@ public:
     {
         CPlayerPed *player = FindPlayerPed ();
         if (owner == player)
-            Command<eScriptCommands::COMMAND_SET_CHAR_HEALTH> (owner, 0);
+            Command<Commands::SET_CHAR_HEALTH> (owner, 0);
 
         return cb ();
     }
@@ -60,7 +60,7 @@ public:
         CPlayerPed *player = FindPlayerPed ();
         if (player && vehicle == FindPlayerVehicle (-1, false))
         {
-            Command<eScriptCommands::COMMAND_SET_CHAR_HEALTH> (player, 0);
+            Command<Commands::SET_CHAR_HEALTH> (player, 0);
         }
 
         return cb ();
@@ -73,7 +73,7 @@ public:
     {
         CPlayerPed *player = FindPlayerPed ();
         if (owner == player)
-            Command<eScriptCommands::COMMAND_SET_CHAR_HEALTH> (owner, 0);
+            Command<Commands::SET_CHAR_HEALTH> (owner, 0);
 
         return cb ();
     }
@@ -84,7 +84,7 @@ public:
         CPed *driver = vehicle->m_pDriver;
 
         if (driver && driver->IsPlayer ())
-            Command<eScriptCommands::COMMAND_SET_CHAR_HEALTH> (driver, 0);
+            Command<Commands::SET_CHAR_HEALTH> (driver, 0);
 
         cb ();
     }
@@ -98,7 +98,7 @@ public:
         CPed *driver = vehicle->m_pDriver;
 
         if (driver && driver->IsPlayer ())
-            Command<eScriptCommands::COMMAND_SET_CHAR_HEALTH> (driver, 0);
+            Command<Commands::SET_CHAR_HEALTH> (driver, 0);
 
         return cb ();
     }
@@ -111,7 +111,7 @@ public:
         CPed *driver = vehicle->m_pDriver;
 
         if (driver && driver->IsPlayer ())
-            Command<eScriptCommands::COMMAND_SET_CHAR_HEALTH> (driver, 0);
+            Command<Commands::SET_CHAR_HEALTH> (driver, 0);
 
         return cb ();
     }
@@ -123,7 +123,7 @@ public:
         CPed *driver = vehicle->m_pDriver;
 
         if (driver && driver->IsPlayer ())
-            Command<eScriptCommands::COMMAND_SET_CHAR_HEALTH> (driver, 0);
+            Command<Commands::SET_CHAR_HEALTH> (driver, 0);
 
         return cb ();
     }

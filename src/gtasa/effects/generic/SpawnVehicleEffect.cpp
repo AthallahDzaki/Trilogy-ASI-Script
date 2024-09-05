@@ -47,7 +47,7 @@ public:
 
         if (newVehicle && warpIntoCar)
         {
-            Command<eScriptCommands::COMMAND_WARP_CHAR_INTO_CAR> (
+            Command<Commands::WARP_CHAR_INTO_CAR> (
                 FindPlayerPed (), newVehicle);
             if (passengers.size () > 0)
             {
@@ -55,8 +55,7 @@ public:
                      i < newVehicle->m_nMaxPassengers && i < passengers.size ();
                      i++)
                 {
-                    Command<eScriptCommands::
-                                COMMAND_WARP_CHAR_INTO_CAR_AS_PASSENGER> (
+                    Command<Commands::WARP_CHAR_INTO_CAR_AS_PASSENGER> (
                         passengers[i], newVehicle, i);
                 }
             }
@@ -64,7 +63,7 @@ public:
 
         if (oldVehicle)
         {
-            Command<eScriptCommands::COMMAND_DELETE_CAR> (oldVehicle);
+            Command<Commands::DELETE_CAR> (oldVehicle);
         }
 
         inst->Disable ();
@@ -165,7 +164,7 @@ public:
                 newVehicle->m_nCreatedBy   = createdBy;
             }
 
-            Command<eScriptCommands::COMMAND_RESTORE_CAMERA_JUMPCUT> ();
+            Command<Commands::RESTORE_CAMERA_JUMPCUT> ();
         }
         else
         {

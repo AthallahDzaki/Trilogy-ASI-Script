@@ -45,7 +45,7 @@ public:
 
         if (checkpoint != 0)
         {
-            Command<eScriptCommands::COMMAND_DELETE_CHECKPOINT> (checkpoint);
+            Command<Commands::DELETE_CHECKPOINT> (checkpoint);
         }
 
         SetPlanesLocked (false);
@@ -76,7 +76,7 @@ public:
         {
             position = FindSuitableMarkerPosition (inst);
 
-            Command<eScriptCommands::COMMAND_ADD_BLIP_FOR_COORD> (position.x,
+            Command<Commands::ADD_BLIP_FOR_COORD> (position.x,
                                                                   position.y,
                                                                   position.z,
                                                                   &coordBlip);
@@ -84,7 +84,7 @@ public:
             CRadar::ChangeBlipColour (coordBlip,
                                       CRGBA (0, 150, 255, 255).ToInt ());
 
-            Command<eScriptCommands::COMMAND_CREATE_CHECKPOINT> (
+            Command<Commands::CREATE_CHECKPOINT> (
                 1, position.x, position.y, position.z, position.x, position.y,
                 position.z, 4.0f, &checkpoint);
 
@@ -100,7 +100,7 @@ public:
 
         SetPlanesLocked (true);
 
-        if (!Command<eScriptCommands::COMMAND_LOCATE_CHAR_ANY_MEANS_2D> (
+        if (!Command<Commands::LOCATE_CHAR_ANY_MEANS_2D> (
                 player, position.x, position.y, 4.0f, 4.0f, true))
             return;
 
@@ -136,7 +136,7 @@ public:
             = CVector (inst->Random (-3000.0f, 3000.0f),
                        inst->Random (-3000.0f, 3000.0f), 0.0f);
 
-        Command<eScriptCommands::COMMAND_REQUEST_COLLISION> (randomPosition.x,
+        Command<Commands::REQUEST_COLLISION> (randomPosition.x,
                                                              randomPosition.y);
         CStreaming::StreamZoneModels (&randomPosition);
         CStreaming::LoadAllRequestedModels (false);
@@ -151,7 +151,7 @@ public:
         if (!groundResult) return FindSuitableMarkerPosition (inst);
 
         float waterLevel = 0.0f;
-        Command<eScriptCommands::COMMAND_GET_WATER_HEIGHT_AT_COORDS> (
+        Command<Commands::GET_WATER_HEIGHT_AT_COORDS> (
             randomPosition.x, randomPosition.y, false, &waterLevel);
 
         randomPosition.z = std::max (randomPosition.z, waterLevel);

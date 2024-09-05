@@ -19,7 +19,7 @@ public:
             ped->m_nPhysicalFlags.bExplosionProof = false;
 
             auto pos = ped->GetPosition ();
-            Command<eScriptCommands::COMMAND_ADD_EXPLOSION> (pos.x, pos.y,
+            Command<Commands::ADD_EXPLOSION> (pos.x, pos.y,
                                                              pos.z, 11);
         }
     }

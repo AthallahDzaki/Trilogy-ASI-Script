@@ -34,7 +34,7 @@ public:
         if (vehicle) heading = vehicle->GetHeading ();
 
         float waterLevel = 0.0f;
-        Command<eScriptCommands::COMMAND_GET_WATER_HEIGHT_AT_COORDS> (
+        Command<Commands::GET_WATER_HEIGHT_AT_COORDS> (
             position.x, position.y, false, &waterLevel);
 
         waterLevel += 0.5f;
@@ -44,7 +44,7 @@ public:
             int model = 8418; // Flat concrete pad with parking
             CStreaming::RequestModel (model, 2);
             CStreaming::LoadAllRequestedModels (false);
-            Command<eScriptCommands::COMMAND_CREATE_OBJECT> (model, position.x,
+            Command<Commands::CREATE_OBJECT> (model, position.x,
                                                              position.y,
                                                              waterLevel,
                                                              &roadObject);

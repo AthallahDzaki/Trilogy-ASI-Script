@@ -1,10 +1,8 @@
 include(FetchContent)
 FetchContent_Declare(plugin-sdk
-  GIT_REPOSITORY https://github.com/gta-chaos-mod/plugin-sdk
-  GIT_SHALLOW)
+  GIT_REPOSITORY https://github.com/AthallahDzaki/plugin-sdk
+  GIT_SHALLOW 2147483647)
 
-set(PSDK_BUILD_III ON)
-set(PSDK_BUILD_VC ON)
 set(PSDK_BUILD_SA ON)
 
 message("Fetching plugin-sdk from GitHub...")

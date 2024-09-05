@@ -42,7 +42,7 @@ public:
     {
         signed int ret = cb ();
 
-        IDirect3DDevice9 *device = GetD3DDevice ();
+        IDirect3DDevice9 *device = reinterpret_cast<IDirect3DDevice9 *>(RwD3D9GetCurrentD3DDevice());
         if (!device) return ret;
 
         if (!image && loadAttempts++ <= 5)
@@ -64,8 +64,9 @@ public:
                          int *out_width, int *out_height)
     {
         PDIRECT3DTEXTURE9 texture;
+        IDirect3DDevice9 *device = reinterpret_cast<IDirect3DDevice9 *>(RwD3D9GetCurrentD3DDevice());
         HRESULT           hr
-            = D3DXCreateTextureFromFileA (GetD3DDevice (), filename, &texture);
+            = D3DXCreateTextureFromFileA (device, filename, &texture);
         if (hr != S_OK) return false;
 
         D3DSURFACE_DESC my_image_desc;

@@ -15,7 +15,7 @@ public:
         {
             if (ped == player) continue;
 
-            Command<eScriptCommands::COMMAND_REMOVE_ALL_CHAR_WEAPONS> (ped);
+            Command<Commands::REMOVE_ALL_CHAR_WEAPONS> (ped);
         }
     }
 };

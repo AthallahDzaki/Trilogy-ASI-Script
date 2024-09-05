@@ -1,10 +1,14 @@
 #include "util/EffectBase.h"
 #include "util/GenericUtil.h"
 #include "util/Teleportation.h"
+#include "util/hooks/HookMacros.h"
+#include "util/GameUtil.h"
 
 #include <CMessages.h>
 #include <CPad.h>
 #include <CPlayerPed.h>
+#include <CCutsceneMgr.h>
+#include <CCamera.h>
 #include <extensions/ScriptCommands.h>
 
 using namespace plugin;
@@ -38,91 +42,72 @@ char cutsceneArray[148][64]
 
 class PlayRandomCutscene : public EffectBase
 {
-    CVector         oldPosition;
-    int             previousInterior = 0;
-    bool            cutsceneLoaded   = false;
+    CVector oldPosition;
+    int previousInterior = 0;
+    bool cutsceneLoaded = false;
+    bool ended = false;
 
 public:
-    bool
-    CanActivate () override
+    bool CanActivate() override
     {
-        return FindPlayerPed ();
+        return FindPlayerPed() != nullptr;
     }
 
-    void
-    OnStart (EffectInstance *inst) override
+    void OnStart(EffectInstance *inst) override
     {
-        CPed       *playerCPed;
-        CPlayerPed *player = FindPlayerPed ();
-
-        // Command<0x01F5>(0, &playerCPed); // GET_PLAYER_CHAR
-
-        oldPosition      = player->GetPosition ();
-        previousInterior = player->m_nAreaCode;
-
-        // Command<eScriptCommands::COMMAND_MAKE_PLAYER_SAFE_FOR_CUTSCENE>
-        // (playerCPed);
-
-        CPad *pad = player->GetPadFromPlayer ();
-        if (!pad) return;
-
-        pad->DisablePlayerControls = true;
-
-        int index = inst->Random (0, 10000) % 148;
-
-        CMessages::AddMessageJumpQ (cutsceneArray[index], 5000, 0, 0);
-        Command<eScriptCommands::COMMAND_LOAD_CUTSCENE> (cutsceneArray[index]);
-    }
-
-    void
-    OnEnd (EffectInstance *inst) override
-    {
-        CPlayerPed *player = FindPlayerPed ();
+        CPlayerPed *player = FindPlayerPed();
         if (!player) return;
 
-        CPad *pad = player->GetPadFromPlayer ();
-        if (!pad) return;
+        oldPosition = player->GetPosition();
+        previousInterior = player->m_nAreaCode;
 
-        pad->DisablePlayerControls = false;
+        int index = inst->Random(0, 10000) % 148;
+        const char* cutsceneName = cutsceneArray[index];
+
+        //CMessages::AddMessageJumpQ(cutsceneName, 5000, 0, 0);
+        CCutsceneMgr::LoadCutsceneData(cutsceneName);
+
+        HOOK (inst, Hooked_IsCutsceneSkipButtonBeingPressed, bool (), 0x469F0E, 0x5B1947);
     }
 
-    void
-    OnTick (EffectInstance *inst) override
+    static bool
+    Hooked_IsCutsceneSkipButtonBeingPressed (auto &&cb)
     {
-        // static char message[256];
-        // sprintf (message, "Cutscene Loaded: %d | Cutscene finished: %d",
-        // cutsceneLoaded,
-        // Command<eScriptCommands::COMMAND_HAS_CUTSCENE_FINISHED> ());
-        // CMessages::AddMessageJumpQ (message, 1000, 0, 0);
+        return false; // Ignore Skip Cutscene
+    }
 
-        inst->ResetTimer ();
+    void OnEnd(EffectInstance *inst) override
+    {
+        
+    }
 
-        if (!Command<eScriptCommands::COMMAND_HAS_CUTSCENE_LOADED>()) {
-            return; // Skip this time, cutscene is not loaded
-        }
+    void OnTick(EffectInstance *inst) override
+    {
+
+        static char msg[256];
+        snprintf(msg, 256, "Cutscene Playing : %d | Cutscene Status %d", GameUtil::IsCutsceneProcessing (), CCutsceneMgr::ms_cutsceneLoadStatus);
 
         if (!cutsceneLoaded)
         {
-            Command<eScriptCommands::COMMAND_START_CUTSCENE> ();
-            cutsceneLoaded = true;
+            if (Command<Commands::HAS_CUTSCENE_LOADED>())  // Ensure it's fully loaded
+            {
+                CCutsceneMgr::StartCutscene();
+                cutsceneLoaded = true;
+            }
         }
-
-        if(Command<eScriptCommands::COMMAND_IS_SKIP_CUTSCENE_BUTTON_PRESSED>()) {
-            Command<eScriptCommands::COMMAND_CLEAR_CUTSCENE> ();
-            Teleportation::Teleport (oldPosition, previousInterior);
-            inst->Disable ();
-        }
-
-        if (Command<eScriptCommands::COMMAND_HAS_CUTSCENE_FINISHED> ()
-            && cutsceneLoaded)
+        else
         {
-            Command<eScriptCommands::COMMAND_CLEAR_CUTSCENE> ();
-
-            Teleportation::Teleport (oldPosition, previousInterior);
-
-            inst->Disable ();
+            CMessages::AddMessageJumpQ(msg, 1000, 0, 0);
+            if (CCutsceneMgr::HasCutsceneFinished())
+            {
+                static char message[256];
+                snprintf(message, 256, "Cutscene Done");
+                CMessages::AddMessageJumpQ(message, 1000, 0, 0);
+                CCutsceneMgr::FinishCutscene();
+                TheCamera.FinishCutscene();
+            }
         }
     }
 };
 
-// DEFINE_EFFECT (PlayRandomCutscene, "effect_random_cutscene", 0);
+DEFINE_EFFECT (PlayRandomCutscene, "effect_random_cutscene", 0);

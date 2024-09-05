@@ -32,7 +32,7 @@ public:
         CPlayerPed *player = FindPlayerPed ();
         if (!player) return;
 
-        Command<eScriptCommands::COMMAND_CLEAR_CHAR_TASKS_IMMEDIATELY> (player);
+        Command<Commands::CLEAR_CHAR_TASKS_IMMEDIATELY> (player);
 
         wait = 100;
     }

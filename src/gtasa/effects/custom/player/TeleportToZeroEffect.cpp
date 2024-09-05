@@ -36,14 +36,13 @@ public:
         CVehicle *playerVehicle = FindPlayerVehicle (-1, false);
         if (playerVehicle)
         {
-            Command<eScriptCommands::
-                        COMMAND_REMOVE_CHAR_FROM_CAR_MAINTAIN_POSITION> (
+            Command<Commands::REMOVE_CHAR_FROM_CAR_MAINTAIN_POSITION> (
                 player, playerVehicle);
         }
 
         Teleportation::Teleport (CVector (-2245.66f, 128.89f, 35.0f));
         player->m_vecMoveSpeed = CVector (0, 0, 0);
-        Command<eScriptCommands::COMMAND_RESTORE_CAMERA_JUMPCUT> ();
+        Command<Commands::RESTORE_CAMERA_JUMPCUT> ();
 
         inst->Disable ();
     }

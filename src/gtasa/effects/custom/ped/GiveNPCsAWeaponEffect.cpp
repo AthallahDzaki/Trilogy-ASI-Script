@@ -37,9 +37,9 @@ public:
             if (ped == player) continue;
 
             auto weapon = weapons[inst->Random (1, 100000) % weapons.size ()];
-            Command<eScriptCommands::COMMAND_GIVE_WEAPON_TO_CHAR> (ped, weapon,
+            Command<Commands::GIVE_WEAPON_TO_CHAR> (ped, weapon,
                                                                    9999);
-            Command<eScriptCommands::COMMAND_SET_CURRENT_CHAR_WEAPON> (ped,
+            Command<Commands::SET_CURRENT_CHAR_WEAPON> (ped,
                                                                        weapon);
         }
     }

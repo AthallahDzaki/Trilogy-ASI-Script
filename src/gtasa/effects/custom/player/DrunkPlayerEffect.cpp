@@ -13,7 +13,7 @@ public:
         CPlayerPed *player = FindPlayerPed ();
         if (!player) return;
 
-        Command<eScriptCommands::COMMAND_SET_PLAYER_DRUNKENNESS> (0, 0);
+        Command<Commands::SET_PLAYER_DRUNKENNESS> (0, 0);
 
         CPad *pad = player->GetPadFromPlayer ();
         if (pad) pad->SetDrunkInputDelay (0);
@@ -25,7 +25,7 @@ public:
         CPlayerPed *player = FindPlayerPed ();
         if (!player) return;
 
-        Command<eScriptCommands::COMMAND_SET_PLAYER_DRUNKENNESS> (0, 100);
+        Command<Commands::SET_PLAYER_DRUNKENNESS> (0, 100);
 
         CPad *pad = player->GetPadFromPlayer ();
         if (!pad) return;

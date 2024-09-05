@@ -106,8 +106,7 @@ public:
                       ? eCarDrivingStyle::DRIVINGSTYLE_PLOUGH_THROUGH
                       : eCarDrivingStyle::DRIVINGSTYLE_STOP_FOR_CARS;
 
-            Command<eScriptCommands::
-                        COMMAND_REMOVE_CHAR_FROM_CAR_MAINTAIN_POSITION> (
+            Command<Commands::REMOVE_CHAR_FROM_CAR_MAINTAIN_POSITION> (
                 thisDriver, thisVehicle);
 
             WarpPedIntoCar (thisDriver, otherVehicle, drivingStyle);
@@ -120,8 +119,7 @@ public:
                       ? eCarDrivingStyle::DRIVINGSTYLE_PLOUGH_THROUGH
                       : eCarDrivingStyle::DRIVINGSTYLE_STOP_FOR_CARS;
 
-            Command<eScriptCommands::
-                        COMMAND_REMOVE_CHAR_FROM_CAR_MAINTAIN_POSITION> (
+            Command<Commands::REMOVE_CHAR_FROM_CAR_MAINTAIN_POSITION> (
                 otherDriver, otherVehicle);
 
             WarpPedIntoCar (otherDriver, thisVehicle, drivingStyle);
@@ -129,7 +127,7 @@ public:
 
         if (wasPlayerADriver)
         {
-            Command<eScriptCommands::COMMAND_RESTORE_CAMERA_JUMPCUT> ();
+            Command<Commands::RESTORE_CAMERA_JUMPCUT> ();
         }
 
         // Set vehicle cooldowns
@@ -142,11 +140,11 @@ public:
     {
         vehicle->m_nVehicleFlags.bHasBeenOwnedByPlayer = true;
 
-        Command<eScriptCommands::COMMAND_WARP_CHAR_INTO_CAR> (ped, vehicle);
+        Command<Commands::WARP_CHAR_INTO_CAR> (ped, vehicle);
 
         if (ped != FindPlayerPed ())
         {
-            Command<eScriptCommands::COMMAND_TASK_CAR_DRIVE_WANDER> (
+            Command<Commands::TASK_CAR_DRIVE_WANDER> (
                 ped, vehicle, 20.0f, drivingStyle);
         }
     }

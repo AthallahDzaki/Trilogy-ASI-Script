@@ -107,8 +107,7 @@ public:
         CVehicle *playerVehicle = FindPlayerVehicle (-1, false);
         if (playerVehicle)
         {
-            Command<eScriptCommands::
-                        COMMAND_REMOVE_CHAR_FROM_CAR_MAINTAIN_POSITION> (
+            Command<Commands::REMOVE_CHAR_FROM_CAR_MAINTAIN_POSITION> (
                 player, playerVehicle);
         }
 
@@ -125,9 +124,9 @@ public:
         stuntVehicle->SetOrientation (jump.orientation.x, jump.orientation.y,
                                       jump.orientation.z);
 
-        Command<eScriptCommands::COMMAND_WARP_CHAR_INTO_CAR> (player,
+        Command<Commands::WARP_CHAR_INTO_CAR> (player,
                                                               stuntVehicle);
-        Command<eScriptCommands::COMMAND_RESTORE_CAMERA_JUMPCUT> ();
+        Command<Commands::RESTORE_CAMERA_JUMPCUT> ();
 
         CMatrix *matrix = stuntVehicle->GetMatrix ();
 

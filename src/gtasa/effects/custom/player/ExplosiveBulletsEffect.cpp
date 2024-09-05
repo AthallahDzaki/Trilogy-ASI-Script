@@ -39,7 +39,7 @@ public:
     static void
     ExplodeAt (CVector point)
     {
-        Command<eScriptCommands::COMMAND_ADD_EXPLOSION> (point.x, point.y,
+        Command<Commands::ADD_EXPLOSION> (point.x, point.y,
                                                          point.z, 0);
     }
 

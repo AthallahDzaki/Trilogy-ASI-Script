@@ -11,7 +11,7 @@ public:
     OnStart (EffectInstance *inst) override
     {
         for (CVehicle *vehicle : CPools::ms_pVehiclePool)
-            Command<eScriptCommands::COMMAND_TASK_EVERYONE_LEAVE_CAR> (vehicle);
+            Command<Commands::TASK_EVERYONE_LEAVE_CAR> (vehicle);
     }
 };
 

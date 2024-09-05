@@ -102,7 +102,7 @@ public:
     {
         CVector markerPosition = GetMarkerPosition ();
 
-        Command<eScriptCommands::COMMAND_REQUEST_COLLISION> (markerPosition.x,
+        Command<Commands::REQUEST_COLLISION> (markerPosition.x,
                                                              markerPosition.y);
         CStreaming::StreamZoneModels (&markerPosition);
         CStreaming::LoadAllRequestedModels (false);
@@ -113,7 +113,7 @@ public:
               + 3.0f;
 
         float waterLevel = 0.0f;
-        Command<eScriptCommands::COMMAND_GET_WATER_HEIGHT_AT_COORDS> (
+        Command<Commands::GET_WATER_HEIGHT_AT_COORDS> (
             markerPosition.x, markerPosition.y, false, &waterLevel);
 
         markerPosition.z = std::max (markerPosition.z, waterLevel);

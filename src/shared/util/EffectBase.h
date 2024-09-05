@@ -89,7 +89,7 @@ public:
     virtual bool
     CanTickDown_Internal (EffectInstance *instance)
     {
-        if (!CONFIG ("Chaos.AlwaysCountDownEffects", false) && !Globals::enabledEffects["effect_random_cutscene"]
+        if (!CONFIG ("Chaos.AlwaysCountDownEffects", false)
             || CONFIG_CC_ENABLED)
         {
             if (GameUtil::IsCutsceneProcessing ()) return false;

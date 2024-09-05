@@ -37,7 +37,7 @@ public:
         hasRunOverPed = true;
 
         CVector pos = thisPed->GetPosition ();
-        Command<eScriptCommands::COMMAND_ADD_EXPLOSION> (pos.x, pos.y, pos.z,
+        Command<Commands::ADD_EXPLOSION> (pos.x, pos.y, pos.z,
                                                          7);
 
         cb ();

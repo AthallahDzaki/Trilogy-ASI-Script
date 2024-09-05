@@ -10,7 +10,7 @@ public:
     void
     OnStart (EffectInstance *inst) override
     {
-        Command<eScriptCommands::COMMAND_RESTORE_CAMERA_JUMPCUT> ();
+        Command<Commands::RESTORE_CAMERA_JUMPCUT> ();
     }
 };
 

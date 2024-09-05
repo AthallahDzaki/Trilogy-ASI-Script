@@ -34,7 +34,7 @@ public:
         int model = 2115; // Table
         CStreaming::RequestModel (model, 2);
         CStreaming::LoadAllRequestedModels (false);
-        Command<eScriptCommands::COMMAND_CREATE_OBJECT> (model, position.x,
+        Command<Commands::CREATE_OBJECT> (model, position.x,
                                                          position.y, position.z,
                                                          &tableObject);
         CStreaming::SetModelIsDeletable (model);
