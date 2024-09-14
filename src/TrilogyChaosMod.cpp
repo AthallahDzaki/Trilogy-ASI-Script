@@ -1,8 +1,17 @@
+#pragma comment ( lib, "Crypt32.lib" )
+#pragma comment ( lib, "Wldap32.lib" )
+#pragma comment ( lib, "Normaliz.lib" )
+
 #include "util/Config.h"
 #include "util/DrawHelper.h"
 #include "util/EffectHandler.h"
 #include "util/GameHandler.h"
 #include "util/Websocket.h"
+
+#define WIN32_LEAN_AND_MEAN
+#include <windows.h>
+#define CURL_STATICLIB
+#include <curl.h>
 
 #ifdef GTASA
 CdeclEvent<AddressList<0x53E550, H_CALL, 0x53E83C, H_CALL, 0x53EBA2, H_CALL>,
@@ -39,6 +48,8 @@ public:
     {
 
         UnProtectInstance ();
+
+        curl_global_init(CURL_GLOBAL_ALL);
 
         Config::Init ();
         Websocket::Setup ();

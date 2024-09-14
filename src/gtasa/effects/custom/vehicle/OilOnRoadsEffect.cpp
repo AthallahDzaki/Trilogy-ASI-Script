@@ -195,10 +195,10 @@ public:
             {
                 continue;
             }
-            spot.Update (dt);
+            spot.Update(dt);
 
-            if (TheCamera.IsSphereVisible (&spot.pos,
-                                           spot.SPOT_SIZE * spot.radius))
+            if (TheCamera.IsSphereVisible(spot.pos,
+                                          spot.SPOT_SIZE * spot.radius))
             {
                 spot.Render ();
             }

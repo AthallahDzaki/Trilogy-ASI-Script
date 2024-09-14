@@ -86,7 +86,7 @@ GameUtil::LoadFromFile (std::string fileName)
 
     if (std::filesystem::exists (CGenericGameStorage::ms_LoadFileName))
     {
-        FrontEndMenuManager.m_bLoadingData = true;
+        FrontEndMenuManager.m_bWantToLoad = true;
         FrontEndMenuManager.m_bMenuActive  = false;
 
         byte gameState
@@ -186,10 +186,10 @@ GameUtil::RebuildPlayer ()
     CPlayerPed *player = FindPlayerPed ();
     if (player)
     {
-        ePedState oldState  = player->m_nPedState;
-        player->m_nPedState = PEDSTATE_IDLE;
+        ePedState oldState  = player->m_ePedState;
+        player->m_ePedState = PEDSTATE_IDLE;
         CClothes::RebuildPlayer (player, false);
-        player->m_nPedState = oldState;
+        player->m_ePedState = oldState;
     }
 }
 
@@ -328,7 +328,7 @@ GameUtil::IsPlayerSafe ()
         return false;
     }
 
-    switch (player->m_nPedState)
+    switch (player->m_ePedState)
     {
         case PEDSTATE_ARRESTED:
         case PEDSTATE_ARREST_PLAYER:

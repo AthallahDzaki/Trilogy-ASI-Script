@@ -180,7 +180,7 @@ public:
                             ePedState state = PEDSTATE_NONE;
 
                             CPlayerPed *player = FindPlayerPed ();
-                            if (player) state = player->m_nPedState;
+                            if (player) state = player->m_ePedState;
 
                             return std::to_string (state);
                         });
