@@ -1,4 +1,5 @@
 #include "effects/OneTimeEffect.h"
+#include "util/GameUtil.h"
 
 #include <CMenuManager.h>
 #include <CGame.h>
@@ -23,6 +24,8 @@ public:
         CGame::bMissionPackGame = 0;
         FrontEndMenuManager.DoSettingsBeforeStartingAGame();
         FrontEndMenuManager.m_bShutDownFrontEndRequested = 1;
+
+        GameUtil::DeleteAutoSave ();
     }
 };
 
