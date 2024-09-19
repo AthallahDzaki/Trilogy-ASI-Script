@@ -149,6 +149,7 @@ Websocket::CallFunction (std::string text)
     // JSON data that can't be parsed
     try
     {
+
         auto json = nlohmann::json::parse (text);
 
         if (json.value ("IsCrowdControl", false) && CONFIG_CC_ENABLED)
@@ -202,6 +203,14 @@ Websocket::CallFunction (std::string text)
                 auto data = json.at ("data");
 
                 EffectHandler::HandleFunction (data);
+            }
+            else if (type == "version")
+            {
+                nlohmann::json response;
+
+                response["version"] = std::string("SA CHAOS V1.4");
+
+                SendWebsocketMessage(response);
             }
         }
     }

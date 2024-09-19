@@ -203,5 +203,7 @@ public:
 DEFINE_EFFECT (CustomTexturesEffect, "effect_textures_its_morbin_time",         GROUP_CUSTOM_TEXTURES, "morbin.png");
 DEFINE_EFFECT (CustomTexturesEffect, "effect_textures_counter_strike_source",   GROUP_CUSTOM_TEXTURES, "counter_strike_source.png");
 DEFINE_EFFECT (CustomTexturesEffect, "effect_textures_custom",                  GROUP_CUSTOM_TEXTURES, "custom.png");
-DEFINE_EFFECT (CustomTexturesEffect, "effect_texture_url",                      GROUP_CUSTOM_TEXTURES, "https://avatars.githubusercontent.com/u/44716687?v=4");
+DEFINE_EFFECT (CustomTexturesEffect, "effect_texture_frankenstein",             GROUP_CUSTOM_TEXTURES, "tt_xfrnknstnx.png");
+DEFINE_EFFECT (CustomTexturesEffect, "effect_texture_wdg",                      GROUP_CUSTOM_TEXTURES, "tt_wdgofficial.png");
+DEFINE_EFFECT (CustomTexturesEffect, "effect_texture_dinoandrean",              GROUP_CUSTOM_TEXTURES, "tt_dinoandreann.png");
 // clang-format on

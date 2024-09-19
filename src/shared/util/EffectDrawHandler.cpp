@@ -356,7 +356,6 @@ EffectDrawHandler::DrawRecentEffects ()
     }
     else
     {
-        offset = 0;
 
         ResetOffsetCooldown ();
     }
