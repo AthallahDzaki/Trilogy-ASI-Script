@@ -55,5 +55,6 @@ jobs:
       uses: ncipollo/release-action@v1.12.0
       with:
         allowUpdates: "true"
+        omitBody: true
         artifacts: "SA-CHAOS.zip"
         token: ${{ secrets.GITHUB_TOKEN }}
