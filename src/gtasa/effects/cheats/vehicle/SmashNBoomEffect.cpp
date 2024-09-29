@@ -83,4 +83,4 @@ public:
     }
 };
 
-DEFINE_EFFECT (SmashNBoomEffect, "effect_smash_n_boom", 0);
+DEFINE_EFFECT (SmashNBoomEffect, "effect_smash_n_boom", GROUP_CHEAT);

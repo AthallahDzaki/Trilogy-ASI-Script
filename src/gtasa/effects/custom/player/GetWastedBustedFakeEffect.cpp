@@ -1,5 +1,6 @@
 #include "util/EffectBase.h"
 #include "util/GenericUtil.h"
+#include "util/hooks/HookMacros.h"
 #include <extensions/ScriptCommands.h>
 
 enum class FakeEffectType
@@ -19,6 +20,7 @@ class GetWastedBustedFake : public EffectBase
 {
     FakeEffectType type;
     int            wait = 0;
+    static inline bool skipBlipRender{};
 
 public:
     GetWastedBustedFake () = delete;
@@ -28,13 +30,26 @@ public:
     void
     OnStart (EffectInstance *inst) override
     {
+        HOOK_ARGS (inst, Hooked_CRadar_ShowRadarTraceWithHeight,
+                   void (float, float, std::uint32_t, std::uint32_t,
+                         std::uint32_t, std::uint32_t, std::uint32_t,
+                         std::uint8_t),
+                   0x584070);
+
         inst->SetIsOneTimeEffect ();
         inst->SetTimerVisible (false);
 
+        skipBlipRender = true;
         std::string msg (type == FakeEffectType::WASTED ? "DEAD" : "BUSTED");
         Command<Commands::CLEAR_SMALL_PRINTS> ();
+        Command<Commands::SET_EVERYONE_IGNORE_PLAYER> (0, true);
+        Command<Commands::SET_POLICE_IGNORE_PLAYER> (0, true);
+        Command<Commands::CLEAR_MISSION_AUDIO> (1);
+        Command<Commands::CLEAR_MISSION_AUDIO> (2);
+        Command<Commands::CLEAR_HELP> ();
         Command<Commands::PRINT_BIG> (msg.data (), FADE_IN_TIME,
                                                      3);
+
 
         if (CTheScripts::IsPlayerOnAMission ())
         {
@@ -84,15 +99,32 @@ public:
 
             Command<Commands::RESTORE_CAMERA> ();
 
-            TheCamera.Fade (FADE_OUT_TIME_FLOAT, 1);            
+            TheCamera.Fade (FADE_OUT_TIME_FLOAT, 1);
 
-            pad->DisablePlayerControls = false;            
+            Command<Commands::SET_EVERYONE_IGNORE_PLAYER> (0, false);
+            Command<Commands::SET_POLICE_IGNORE_PLAYER> (0, false);       
+
+            pad->DisablePlayerControls = false;
 
             wait = 0;
+
+            skipBlipRender = false;
 
             inst->OverrideName (std::string (inst->GetName ()) + "?");
             inst->Disable ();
         }
+    }
+
+    static void
+    Hooked_CRadar_ShowRadarTraceWithHeight (auto &&cb, float x, float y,
+                                            std::uint32_t size, std::uint32_t R,
+                                            std::uint32_t G, std::uint32_t B,
+                                            std::uint32_t A,
+                                            std::uint8_t  height)
+    {
+        if (skipBlipRender) return;
+
+        cb ();
     }
 };
 

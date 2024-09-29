@@ -12,4 +12,4 @@ public:
     }
 };
 
-DEFINE_EFFECT (NoLungCapacityEffect, "effect_no_lung_capacity", 0);
+DEFINE_EFFECT (NoLungCapacityEffect, "effect_no_lung_capacity", GROUP_STATS);

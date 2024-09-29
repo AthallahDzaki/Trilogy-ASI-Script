@@ -25,4 +25,4 @@ public:
     }
 };
 
-DEFINE_EFFECT (SkinnyPlayerEffect, "effect_skinny_player", 0);
+DEFINE_EFFECT (SkinnyPlayerEffect, "effect_skinny_player", GROUP_STATS);

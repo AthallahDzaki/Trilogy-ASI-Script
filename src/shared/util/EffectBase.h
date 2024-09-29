@@ -41,6 +41,8 @@ enum eEffectGroups : unsigned long long
     GROUP_CUSTOM_FONT        = (1ull << 25),
     GROUP_REPLACE_ALL_TEXT   = (1ull << 26),
     GROUP_TELEPORT           = (1ull << 27),
+	GROUP_CHEAT				 = (1ull << 28),
+	GROUP_STATS				 = (1ull << 29),
 
     GROUP_MAX_GROUPS = 32
 };

@@ -85,7 +85,7 @@ class PassCurrentMissionEffect : public EffectBase
         {"TORENO2", 10715}, // Highjack
         {"DES3", 147},      // Interdiction
         {"DESERT6", 726},   // N.O.E.
-        {"DESERT9", 21869}, // Stowaway
+        {"DESERT9", 21869}, // Stowaway (Crash)?
         {"MAF4", 29924},    // Black Project
         {"DES10", 4130},    // Green Goo
         {"CASINO1", 19542}, // Fender Ketchup
@@ -151,6 +151,7 @@ class PassCurrentMissionEffect : public EffectBase
         /* Las Venturas */
         "DES3",    // Interdiction
         "DESERT6", // N.O.E.
+        "DESERT9", // Stowaway
         "CASINO6", // The Meat Business
         "HEIST3",  // Key To Her Heart
         /* ######################### */

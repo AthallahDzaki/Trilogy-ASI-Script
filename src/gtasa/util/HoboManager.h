@@ -193,10 +193,11 @@ public:
             CWorld::Add (ped);
             ped->m_nWeaponShootingRate = 99999;
             ped->m_nWeaponAccuracy     = 99999;
-            ped->m_pIntelligence->SetHearingRange (99999.0f); // This ped can hear everything
             ped->m_fHealth             = hoboType == 3 ? 5000.0f : 1000.0f;
 
             // Only Explosion and Ramp can kill normal hobo
+			ped->m_nPedFlags.bDrownsInWater = false;
+			ped->m_nPedFlags.bFleeWhenStanding = false;
             ped->m_nPhysicalFlags.bBulletProof = true;
             ped->m_nPhysicalFlags.bFireProof   = true;
             ped->m_nPhysicalFlags.bMeleeProof  = true;
@@ -220,8 +221,10 @@ public:
             CStreaming::SetModelIsDeletable (model);
 
             ped->PositionAnyPedOutOfCollision ();
+			for(int i = 0; i < 24; i++)
             Command<Commands::SET_CHAR_RELATIONSHIP> (
-                ped, 4, ePedType::PED_TYPE_PLAYER1);
+                ped, 4, i); // Real Angry!!!
+			
         }
         return ped;
     }

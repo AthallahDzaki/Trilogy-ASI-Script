@@ -12,4 +12,4 @@ public:
     }
 };
 
-DEFINE_EFFECT (AllTaxisHaveNitrousEffect, "effect_all_taxis_have_nitro", 0);
+DEFINE_EFFECT (AllTaxisHaveNitrousEffect, "effect_all_taxis_have_nitro", GROUP_CHEAT);

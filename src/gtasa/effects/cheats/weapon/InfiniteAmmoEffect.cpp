@@ -25,4 +25,4 @@ public:
     }
 };
 
-DEFINE_EFFECT (InfiniteAmmoEffect, "effect_infinite_ammo", 0);
+DEFINE_EFFECT (InfiniteAmmoEffect, "effect_infinite_ammo", GROUP_CHEAT);

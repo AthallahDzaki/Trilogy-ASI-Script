@@ -15,4 +15,4 @@ public:
     }
 };
 
-DEFINE_EFFECT (NoDrivingSkillsEffect, "effect_no_driving_skills", 0);
+DEFINE_EFFECT (NoDrivingSkillsEffect, "effect_no_driving_skills", GROUP_STATS);

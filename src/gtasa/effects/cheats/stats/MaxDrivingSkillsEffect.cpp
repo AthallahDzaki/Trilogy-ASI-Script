@@ -15,4 +15,4 @@ public:
     }
 };
 
-DEFINE_EFFECT (MaxDrivingSkillsEffect, "effect_max_driving_skills", 0);
+DEFINE_EFFECT (MaxDrivingSkillsEffect, "effect_max_driving_skills", GROUP_STATS);

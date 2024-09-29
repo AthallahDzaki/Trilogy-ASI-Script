@@ -22,4 +22,4 @@ public:
     }
 };
 
-DEFINE_EFFECT (FatPlayerEffect, "effect_fat_player", 0);
+DEFINE_EFFECT (FatPlayerEffect, "effect_fat_player", GROUP_STATS);

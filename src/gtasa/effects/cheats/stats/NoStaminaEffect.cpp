@@ -19,4 +19,4 @@ public:
     }
 };
 
-DEFINE_EFFECT (NoStaminaEffect, "effect_no_stamina", 0);
+DEFINE_EFFECT (NoStaminaEffect, "effect_no_stamina", GROUP_STATS);

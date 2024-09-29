@@ -44,4 +44,4 @@ public:
     }
 };
 
-DEFINE_EFFECT (GetJetpackEffect, "effect_get_jetpack", 0);
+DEFINE_EFFECT (GetJetpackEffect, "effect_get_jetpack", GROUP_CHEAT);

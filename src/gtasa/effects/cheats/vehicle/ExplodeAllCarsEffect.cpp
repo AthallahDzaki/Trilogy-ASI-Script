@@ -40,4 +40,4 @@ public:
     }
 };
 
-DEFINE_EFFECT (ExplodeAllCarsEffect, "effect_explode_all_cars", 0);
+DEFINE_EFFECT (ExplodeAllCarsEffect, "effect_explode_all_cars", GROUP_CHEAT);

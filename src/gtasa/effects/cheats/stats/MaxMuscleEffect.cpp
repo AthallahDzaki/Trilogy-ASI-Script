@@ -22,4 +22,4 @@ public:
     }
 };
 
-DEFINE_EFFECT (MaxMuscleEffect, "effect_max_muscle", 0);
+DEFINE_EFFECT (MaxMuscleEffect, "effect_max_muscle", GROUP_STATS);

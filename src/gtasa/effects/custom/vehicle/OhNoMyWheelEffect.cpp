@@ -17,10 +17,12 @@ public:
     OnStart (EffectInstance *inst) override
     {
         CVehicle *vehicle = FindPlayerVehicle (-1, false);
-        DetachThisWheel(vehicle, eCarNodes::CAR_WHEEL_LF, 0, false);
-        DetachThisWheel(vehicle, eCarNodes::CAR_WHEEL_LB, 1, true);
-        DetachThisWheel(vehicle, eCarNodes::CAR_WHEEL_RF, 2, false);
-        DetachThisWheel(vehicle, eCarNodes::CAR_WHEEL_RB, 3, true);
+		if(vehicle && (vehicle->m_nVehicleSubClass == VEHICLE_AUTOMOBILE || vehicle->m_nVehicleSubClass == VEHICLE_QUAD) && vehicle->m_nModelIndex != MODEL_RHINO) {
+			DetachThisWheel(vehicle, eCarNodes::CAR_WHEEL_LF, 0, false);
+			DetachThisWheel(vehicle, eCarNodes::CAR_WHEEL_LB, 1, true);
+			DetachThisWheel(vehicle, eCarNodes::CAR_WHEEL_RF, 2, false);
+			DetachThisWheel(vehicle, eCarNodes::CAR_WHEEL_RB, 3, true);
+		}
     }
 
     void 

@@ -25,8 +25,8 @@ public:
         HOOK_ARGS (inst, Hooked_PrintMoney, char (float, float, char *),
                    0x58F607);
 
-        HOOK_ARGS (inst, Hooked_PrintClockAndAmmo, char (float, float, char *),
-                   0x58EC21, 0x58962A);
+        HOOK_ARGS (inst, Hooked_PrintText, char (float, float, char *),
+                   0x71A700);
     }
 
     static char *
@@ -44,7 +44,7 @@ public:
     }
 
     static char
-    Hooked_PrintClockAndAmmo (auto &&cb, float x, float y, char *&text)
+    Hooked_PrintText (auto &&cb, float x, float y, char *&text)
     {
         text = (char *) replacementText.c_str ();
 

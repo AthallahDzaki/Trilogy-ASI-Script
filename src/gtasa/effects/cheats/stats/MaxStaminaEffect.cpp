@@ -19,4 +19,4 @@ public:
     }
 };
 
-DEFINE_EFFECT (MaxStaminaEffect, "effect_max_stamina", 0);
+DEFINE_EFFECT (MaxStaminaEffect, "effect_max_stamina", GROUP_STATS);

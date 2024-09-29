@@ -12,4 +12,4 @@ public:
     }
 };
 
-DEFINE_EFFECT (MaxLungCapacityEffect, "effect_max_lung_capacity", 0);
+DEFINE_EFFECT (MaxLungCapacityEffect, "effect_max_lung_capacity", GROUP_STATS);

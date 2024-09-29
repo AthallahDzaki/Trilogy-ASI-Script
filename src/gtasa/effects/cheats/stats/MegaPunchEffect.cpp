@@ -35,4 +35,4 @@ public:
     }
 };
 
-DEFINE_EFFECT (MegaPunchEffect, "effect_mega_punch", 0);
+DEFINE_EFFECT (MegaPunchEffect, "effect_mega_punch", GROUP_CHEAT);

@@ -21,18 +21,24 @@ class RollCreditsEffect : public OneTimeEffect
     static inline uint32_t lineOffset;
     static inline float  scrollOffset;
 
+private:	
+	int 	 creditType;
+
 public:
+	RollCreditsEffect (int type) : creditType (type) {}
+
     void
     OnStart (EffectInstance *inst) override
     {
-        plugin::patch::RedirectJump(0x5A87F0, Hooked_CCredits_Render);
-        //HOOK_METHOD (inst, Hooked_CCredits_Render, void (), 0x5A87F0);
+		if(creditType == 1)
+			plugin::patch::RedirectJump(0x5A87F0, Hooked_CCredits_Render);
+        //HOOK_ARGS (inst, Hooked_CCredits_Render, char (), 0x5A87F0);
 
         CCredits::bCreditsGoing = 1;
         CCredits::CreditsStartTime = CTimer::m_snTimeInMilliseconds;
     }
 
-    static void
+    static char
     Hooked_CCredits_Render ()
     {
         constexpr float SPACE_SMALL  = 0.5f;
@@ -71,7 +77,11 @@ public:
 
         if ((float)lineOffset + RsGlobal.maximumHeight - scrollOffset < -10.0f) {
             CCredits::bCreditsGoing = 0;
+            // plugin::patch::RedirectJump(0x5A87F0, CCredits::RenderCredits);  // This Jump not Work XD
+			plugin::patch::RedirectJump(0x5A87F0, Real_CCredits_Render);
         }
+
+        return true;
     }
 
     static void
@@ -921,29 +931,9 @@ public:
 
         if ((float)lineOffset + RsGlobal.maximumHeight - scrollOffset < -10.0f) {
             CCredits::bCreditsGoing = 0;
-            plugin::patch::RedirectJump(0x5A87F0, Real_CCredits_Render); // Back to original
         }
-
     }
-
-    // void
-    // OnEnd (EffectInstance *inst) override
-    // {
-    //     if (CCredits::CreditsStartTime == this->creditsStartTime)
-    //     {
-    //         CCredits::Stop ();
-    //     }
-    // }
-
-    // void
-    // OnTick (EffectInstance *inst) override
-    // {
-    //     if (!CCredits::bCreditsGoing)
-    //     {
-    //         CCredits::Start ();
-    //         this->creditsStartTime = CCredits::CreditsStartTime;
-    //     }
-    // }
 };
 
-DEFINE_EFFECT (RollCreditsEffect, "effect_roll_credits", 0);
+DEFINE_EFFECT (RollCreditsEffect, "effect_roll_credits", 0, 0);
+DEFINE_EFFECT (RollCreditsEffect, "effect_roll_chaos_credits", 0, 1);

@@ -53,4 +53,4 @@ public:
     }
 };
 
-DEFINE_EFFECT (CarsFlowAwayWhenHitEffect, "effect_cars_float_away_when_hit", 0);
+DEFINE_EFFECT (CarsFlowAwayWhenHitEffect, "effect_cars_float_away_when_hit", GROUP_CHEAT);

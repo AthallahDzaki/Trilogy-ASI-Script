@@ -28,4 +28,4 @@ public:
 };
 
 DEFINE_EFFECT (HitmanLevelForAllWeaponsEffect,
-               "effect_hitman_level_for_all_weapons", 0);
+               "effect_hitman_level_for_all_weapons", GROUP_STATS);

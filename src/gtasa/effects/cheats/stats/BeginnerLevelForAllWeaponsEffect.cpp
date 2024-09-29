@@ -28,4 +28,4 @@ public:
 };
 
 DEFINE_EFFECT (BeginnerLevelForAllWeaponsEffect,
-               "effect_beginner_level_for_all_weapons", 0);
+               "effect_beginner_level_for_all_weapons", GROUP_STATS);
