@@ -12,7 +12,7 @@ int exceptions[] = {
 
 using namespace plugin;
 
-class PlayRandomCutscene : public OneTimeEffect
+class PlayRandomMission : public OneTimeEffect
 {
 public:
     bool CanActivate() override
@@ -41,4 +41,4 @@ regenerate:
     }
 };
 
-DEFINE_EFFECT (PlayRandomCutscene, "effect_random_mission", 0);
+DEFINE_EFFECT (PlayRandomMission, "effect_random_mission", 0);

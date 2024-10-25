@@ -47,7 +47,7 @@ public:
 
         treeObject->SetMatrix (*matrix);
         treeObject->SetPosn (position);
-        treeObject->m_nObjectType                         = OBJECT_MISSION2;
+        treeObject->m_nObjectType                         = OBJECT_MISSION;
         treeObject->m_nColDamageEffect                    = 0x14;
         treeObject->m_pObjectInfo->m_fColDamageMultiplier = 0.5f;
     }
