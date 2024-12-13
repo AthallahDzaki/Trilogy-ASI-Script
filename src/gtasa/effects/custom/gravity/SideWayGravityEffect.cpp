@@ -16,7 +16,7 @@ public:
     {
         GameUtil::SetVehiclesToRealPhysics ();
 
-        Force = CVector(cos(FindPlayerPed()->GetHeading()), sin(FindPlayerPed()->GetHeading()), 0.0f) * 100.0f; // Always Push to Right
+        Force = CVector(cos(FindPlayerPed()->GetHeading()), sin(FindPlayerPed()->GetHeading()), 0.0f) * 50.0f; // Always Push to Right
 
         // We Set People to Invicible
         HOOK_METHOD_ARGS (inst, Hooked_KillPedsInVehicle, void (CVehicle *),
