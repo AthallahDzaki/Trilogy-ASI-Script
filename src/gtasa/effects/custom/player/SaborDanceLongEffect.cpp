@@ -38,6 +38,9 @@ public:
         Command<Commands::TASK_PLAY_ANIM_NON_INTERRUPTABLE> (
                 playerPed, "DAN_Left_A", "DANCING", 4.0, false, false, false, false, (22 * 1000) + 270);
 
+        CPad *pad = playerPed->GetPadFromPlayer ();
+        if (pad) pad->DisablePlayerControls = true;
+
         inst->SetDuration((22 * 1000) + 270);
     }
 
@@ -45,6 +48,8 @@ public:
     OnEnd (EffectInstance *inst) override
     {
         CPlayerPed* playerPed = FindPlayerPed ();
+        CPad *pad = playerPed->GetPadFromPlayer ();
+        if (pad) pad->DisablePlayerControls = false;
         Command<Commands::CLEAR_CHAR_TASKS> (playerPed);
     }
 };
