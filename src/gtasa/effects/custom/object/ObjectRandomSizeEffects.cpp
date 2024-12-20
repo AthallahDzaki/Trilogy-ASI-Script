@@ -5,7 +5,6 @@ class ObjectRandomSizeEffect : public EffectBase
 {
 public:
     static inline RwV3d scale = {1.0f, 1.0f, 1.0f};
-    static inline int pause = 0;
     void
     OnStart (EffectInstance *inst) override
     {
@@ -23,15 +22,9 @@ public:
     void
     OnTick (EffectInstance *inst) override
     {
-        if(pause > 0)
-        {
-            pause--;
-            return;
-        }
         scale.x = inst->Random(0.01f, 2.0f);
         scale.y = inst->Random(0.01f, 2.0f);
         scale.z = inst->Random(0.01f, 2.0f);
-        pause = 100; // 100 frames So it's not like a crazy
     }
 
     static void

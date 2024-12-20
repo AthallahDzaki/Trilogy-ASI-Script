@@ -208,7 +208,7 @@ Websocket::CallFunction (std::string text)
             {
                 nlohmann::json response;
 
-                response["version"] = std::string("SA CHAOS V1.6.1a");
+                response["version"] = std::string("SA CHAOS V1.6.1b");
 
                 SendWebsocketMessage(response);
             }
