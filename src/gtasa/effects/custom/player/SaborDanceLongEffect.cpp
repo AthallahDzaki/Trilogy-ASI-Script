@@ -34,7 +34,6 @@ public:
         playerPed->m_pIntelligence->ClearTasks (true, false);
 
         CPad *pad = playerPed->GetPadFromPlayer ();
-        if (pad) pad->DisablePlayerControls |= 1 << 0;
         if (pad) pad->DisablePlayerControls |= 1 << 1;
 
         if(playerPed->DoWeHaveWeaponAvailable(WEAPON_PARACHUTE)) // Has Parachute?
@@ -53,7 +52,7 @@ public:
         Command<Commands::LOAD_ALL_MODELS_NOW>();
 
         Command<Commands::TASK_PLAY_ANIM_NON_INTERRUPTABLE> (
-                playerPed, "DAN_Left_A", "DANCING", 4.0, false, false, false, true, (13 * 1000) + 270);
+                playerPed, "DAN_Left_A", "DANCING", 4.0, false, true, true, true, (13 * 1000) + 270);
 
         inst->SetDuration((13 * 1000) + 270);
     }
@@ -63,7 +62,6 @@ public:
     {
         CPlayerPed* playerPed = FindPlayerPed ();
         CPad *pad = playerPed->GetPadFromPlayer ();
-        if (pad) pad->DisablePlayerControls &= ~(1 << 0);
         if (pad) pad->DisablePlayerControls &= ~(1 << 1);
 
         if(hasParachute) // Has Parachute?
