@@ -52,9 +52,9 @@ public:
         Command<Commands::LOAD_ALL_MODELS_NOW>();
 
         Command<Commands::TASK_PLAY_ANIM_NON_INTERRUPTABLE> (
-                playerPed, "DAN_Left_A", "DANCING", 4.0, false, true, true, true, (13 * 1000) + 270);
+                playerPed, "DAN_Left_A", "DANCING", 4.0, false, true, true, true, (22 * 1000) + 270);
 
-        inst->SetDuration((13 * 1000) + 270);
+        inst->SetDuration((22 * 1000) + 270);
     }
 
     void
