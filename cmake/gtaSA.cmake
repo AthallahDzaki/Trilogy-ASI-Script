@@ -14,7 +14,7 @@ target_link_directories(${CHAOS_SA} PUBLIC
     lib/
     "${dxsdk_SOURCE_DIR}/Lib/x86"
 )
-target_link_libraries(${CHAOS_SA} PUBLIC plugin_sa nlohmann_json uWebSockets minhook efsw bass libcurl)
+target_link_libraries(${CHAOS_SA} PUBLIC plugin_sa nlohmann_json uWebSockets minhook efsw bass libcurl Dbghelp)
 
 target_compile_definitions(${CHAOS_SA} PUBLIC NOMINMAX)
 
@@ -37,4 +37,9 @@ target_precompile_headers(
     <App.h>
 )
 
-# #####################################################################
+# Add Zi debug information when using MSVC
+if(MSVC)
+    target_compile_options(${CHAOS_SA} PRIVATE /Zi)
+    set_target_properties(${CHAOS_SA} PROPERTIES COMPILE_PDB_NAME ${CHAOS_SA})
+	target_link_options(${CHAOS_SA} PRIVATE /DEBUG /PDB:${CMAKE_BINARY_DIR}/${CHAOS_SA}.pdb)
+endif()

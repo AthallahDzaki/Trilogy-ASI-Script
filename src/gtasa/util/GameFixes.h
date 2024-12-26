@@ -11,6 +11,26 @@
 
 using namespace plugin;
 
+// Patch Function
+
+DWORD RETURN_CrashFix_Misc13 = 0x4D4654;
+DWORD RETURN_CrashFix_Misc13B = 0x4D4764;
+void __declspec(naked) HookCrashFixMisc13()
+{
+	__asm {
+		cmp     eax, 0x2480
+		jb      cont  // Skip much code if eax is less than 0x480 (invalid anim)
+
+		mov     al, byte ptr [eax + 0Ah]
+		shr     al, 5
+		jmp     RETURN_CrashFix_Misc13
+	cont:
+		jmp     RETURN_CrashFix_Misc13B // Jump Outside
+	}
+}
+
+// END
+
 class GameFixes
 {
 public:
@@ -54,6 +74,8 @@ public:
 
         // Fix Reefer w/ Invisible Cars
         patch::Nop (0x6F14DE, 3);
+		
+		//plugin::patch::RedirectJump(0x4D464E, HookCrashFixMisc13);
     }
 
     static bool

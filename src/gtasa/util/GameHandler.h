@@ -10,12 +10,15 @@
 #include "util/Websocket.h"
 #include "util/HoboManager.h"
 
+#include "GameUtil.h"
+
 #include <CAnimManager.h>
 #include <CAudioEngine.h>
 #include <CFileMgr.h>
 #include <CReferences.h>
 #include <CTheScripts.h>
 #include <CTimer.h>
+#include <CHud.h>
 #include <extensions/ScriptCommands.h>
 
 using namespace plugin;
@@ -123,6 +126,8 @@ public:
 
         HandleAutoSave ();
         HandleQuickSave ();
+		
+        HandleCJInvisibleFix ();
 
         HandleVehicleToRealPhysics ();
         HandleParachutingWithoutParachuteFix ();
@@ -160,6 +165,22 @@ private:
             EffectHandler::HandleFunction (json);
 
             lastSaved = currentTime + std::chrono::milliseconds{10000};
+        }
+    }
+	
+    static void
+    HandleCJInvisibleFix()
+    {
+        if(KeyPressed(VK_F8)) {
+            const char *asciiText = "Dont Spam This Key Or Your Game Will Crash";
+            char gxtText[256];  // Buffer untuk hasil konversi
+
+            // Memanggil fungsi untuk konversi
+            AsciiToGxtChar(asciiText, gxtText);
+            // void SetHelpMessage(char const* text, bool quickMessage, bool permanent, bool addToBrief);
+            CHud::SetHelpMessage(gxtText, true, false, false);
+
+            GameUtil::RebuildPlayer();
         }
     }
 

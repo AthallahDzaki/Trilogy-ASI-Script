@@ -8,6 +8,8 @@
 #include "util/GameHandler.h"
 #include "util/Websocket.h"
 
+#include "util/CrashHandler.h"
+
 #define WIN32_LEAN_AND_MEAN
 #include <windows.h>
 #define CURL_STATICLIB
@@ -53,6 +55,8 @@ public:
 
         Config::Init ();
         Websocket::Setup ();
+		
+		//CrashDumpHandler::InitializeHandler();
 
         Events::initRwEvent += GameHandler::Initialise;
 

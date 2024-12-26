@@ -41,8 +41,6 @@ public:
             hasParachute = true;
             playerPed->ClearWeapon(WEAPON_PARACHUTE);
         }
-              
-
         Command<Commands::SET_PLAYER_FIRE_BUTTON>(playerPed, false);
 
         Command<Commands::SET_PLAYER_FIRE_BUTTON>(playerPed, false);
@@ -53,6 +51,8 @@ public:
 
         Command<Commands::TASK_PLAY_ANIM_NON_INTERRUPTABLE> (
                 playerPed, "DAN_Down_A", "DANCING", 4.0, false, true, true, true, (13 * 1000) + 270);
+
+        Command<Commands::FREEZE_CHAR_POSITION>(playerPed, true);
 
         inst->SetDuration((13 * 1000) + 270);
     }
@@ -69,6 +69,8 @@ public:
             hasParachute = false;
             playerPed->GiveWeapon(WEAPON_PARACHUTE, 1, true);
         }
+		Command<Commands::FREEZE_CHAR_POSITION>(playerPed, false);
+		Command<Commands::REMOVE_ANIMATION>("DANCING"); // Unload Dancing IFP (R* is Shit)
         Command<Commands::CLEAR_CHAR_TASKS_IMMEDIATELY> (playerPed);
         Command<Commands::SET_PLAYER_FIRE_BUTTON>(playerPed, true);
         Command<Commands::SET_PLAYER_FIRE_BUTTON>(playerPed, true);
