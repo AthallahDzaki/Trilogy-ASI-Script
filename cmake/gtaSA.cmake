@@ -35,6 +35,7 @@ target_precompile_headers(
     <plugin.h>
     <nlohmann/json.hpp>
     <App.h>
+    <rwplcore.h>
 )
 
 # Add Zi debug information when using MSVC
