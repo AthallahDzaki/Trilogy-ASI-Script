@@ -1,3 +1,4 @@
+/*
 #include "util/EffectBase.h"
 #include "util/GameUtil.h"
 
@@ -91,3 +92,4 @@ public:
     // }
 
 };
+*/

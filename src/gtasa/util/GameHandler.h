@@ -138,6 +138,26 @@ private:
     HandleAutoSave ()
     {
         if (!CONFIG ("Chaos.AutosaveAfterMissionPassed", true)) return;
+		
+		if(GameUtil::IsRunRandomMission && GameUtil::OurMissionPassed != GameUtil::GetRealMissionsPassed ()) // 1 Mission Has Been Passed
+		{
+			nlohmann::json json;
+
+            json["effectID"]                     = "effect_autosave";
+            json["duration"]                     = 1000 * 10;
+            json["effectData"]["missionsPassed"] = GameUtil::OurMissionPassed;
+
+            EffectHandler::HandleFunction (json);
+			
+			json["effectID"]                     = "effect_reload_autosave";
+			json["duration"]                     = 1000 * 10;
+			
+			EffectHandler::HandleFunction (json);
+			
+			GameUtil::IsRunRandomMission = false;
+			
+			return;
+		}
 
         int missionsPassed = GameUtil::GetRealMissionsPassed ();
 

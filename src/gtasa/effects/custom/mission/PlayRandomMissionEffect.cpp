@@ -1,4 +1,5 @@
 #include "effects/OneTimeEffect.h"
+#include "util/GameUtil.h"
 
 #include <CTheScripts.h>
 #include <extensions/ScriptCommands.h>
@@ -26,6 +27,8 @@ public:
 			inst->Disable (); // Disable if On Mission
 			return;
 		}
+		
+		GameUtil::OurMissionPassed = GameUtil::GetRealMissionsPassed ();
 
 regenerate:
 		int MissionID = inst->Random(11, 112);
@@ -38,6 +41,8 @@ regenerate:
 		}
 		
 		Command<Commands::LOAD_AND_LAUNCH_MISSION_INTERNAL> (MissionID);
+		
+		GameUtil::IsRunRandomMission = true;
     }
 };
 

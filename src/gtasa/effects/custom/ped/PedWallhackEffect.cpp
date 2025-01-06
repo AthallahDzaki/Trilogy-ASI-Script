@@ -3,7 +3,7 @@
 #include <CFont.h>
 #include <CMenuManager.h>
 #include <CSprite.h>
-#include <d3d9.h>
+//#include <d3d9.h>
 
 using namespace plugin;
 
@@ -122,11 +122,11 @@ public:
             return;
         if (!ped->GetIsOnScreen ()) return; // Skip Unrendered Ped
 
-        DrawCornerBox (static_cast<IDirect3DDevice9 *> (
+/*        DrawCornerBox (static_cast<IDirect3DDevice9 *> (
                            RwD3D9GetCurrentD3DDevice ()),
                        (int) coords.x - 3, (int) coords.y + 25, 30, 60, 1,
                        D3DCOLOR_ARGB (255, 0, 255, 255));
-		/* Danger Code
+		Danger Code
         RwV3d worldPos1  = {0, 0, 0};
         RwV3d worldPos2  = {0, 0, 0};
         RwV3d screenPos1 = {0, 0};
@@ -177,6 +177,7 @@ public:
 		CFont::PrintString (coords.x, coords.y, (char *) text.c_str ());
     }
 
+/*
     static void
     DrawP (IDirect3DDevice9 *Device, int baseX, int baseY, int baseW, int baseH,
            D3DCOLOR Cor)
@@ -245,6 +246,7 @@ public:
         pDevice->SetRenderState(D3DRS_STENCILENABLE, TRUE);
 		
     }
+	*/
 };
 
 DEFINE_EFFECT (PedWallhackEffect, "effect_ped_wallhack", 0);

@@ -50,9 +50,11 @@ public:
         Command<Commands::LOAD_ALL_MODELS_NOW>();
 
         Command<Commands::TASK_PLAY_ANIM_NON_INTERRUPTABLE> (
-                playerPed, "DAN_Down_A", "DANCING", 4.0, false, true, true, true, (13 * 1000) + 270);
+                playerPed, "DAN_Down_A", "DANCING", 4.1, false, true, true, true, (13 * 1000) + 270);
 
         Command<Commands::FREEZE_CHAR_POSITION>(playerPed, true);
+		
+		Command<Commands::SET_CAMERA_IN_FRONT_OF_PLAYER>();
 
         inst->SetDuration((13 * 1000) + 270);
     }
@@ -73,7 +75,8 @@ public:
 		Command<Commands::REMOVE_ANIMATION>("DANCING"); // Unload Dancing IFP (R* is Shit)
         Command<Commands::CLEAR_CHAR_TASKS_IMMEDIATELY> (playerPed);
         Command<Commands::SET_PLAYER_FIRE_BUTTON>(playerPed, true);
-        Command<Commands::SET_PLAYER_FIRE_BUTTON>(playerPed, true);
+		
+		Command<Commands::RESTORE_CAMERA_JUMPCUT>();
     }
 };
 

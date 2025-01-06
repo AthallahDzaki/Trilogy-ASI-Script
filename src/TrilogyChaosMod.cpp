@@ -9,6 +9,7 @@
 #include "util/Websocket.h"
 
 #include "util/CrashHandler.h"
+#include "util/EffectTracer.h"
 
 #define WIN32_LEAN_AND_MEAN
 #include <windows.h>
@@ -56,7 +57,9 @@ public:
         Config::Init ();
         Websocket::Setup ();
 		
-		//CrashDumpHandler::InitializeHandler();
+		CrashDumpHandler::InitializeHandler();
+		
+		EffectTracer::GetInstance().Initialize("./ChaosMod");
 
         Events::initRwEvent += GameHandler::Initialise;
 

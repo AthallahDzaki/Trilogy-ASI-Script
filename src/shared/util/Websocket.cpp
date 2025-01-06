@@ -208,7 +208,7 @@ Websocket::CallFunction (std::string text)
             {
                 nlohmann::json response;
 
-                response["version"] = std::string("SA CHAOS V1.6.1c");
+                response["version"] = std::string("SA CHAOS V1.6.1d");
 				response["silentpatch"] = (GetModuleHandle("SilentPatchSA.asi") != nullptr) ? "true" : "false";
 
                 SendWebsocketMessage(response);

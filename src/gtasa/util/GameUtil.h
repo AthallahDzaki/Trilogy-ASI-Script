@@ -57,6 +57,9 @@ public:
 
     static bool IsCutsceneProcessing ();
     static bool IsPlayerSafe ();
+	
+	static inline bool IsRunRandomMission = false;
+	static inline int OurMissionPassed;
 
     template <typename T>
     static T &

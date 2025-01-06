@@ -184,7 +184,7 @@ public:
         int modelID  = 230; // hobo
         CStreaming::RequestModel (modelID, 0);
         CStreaming::LoadAllRequestedModels (false);
-        CPed *ped = new CCivilianPed (PED_TYPE_CIVMALE, modelID);
+        CPed *ped = new CCivilianPed (PED_TYPE_MISSION8, modelID);
         if (ped)
         {
             ped->SetCharCreatedBy (2); // SCM Ped cannot be Removed!
@@ -221,7 +221,7 @@ public:
             CStreaming::SetModelIsDeletable (model);
 
             ped->PositionAnyPedOutOfCollision ();
-			for(int i = 0; i < 24; i++)
+			for(int i = 0; i < 23; i++) // Ignore MISSION8 (Hobo Type)
             Command<Commands::SET_CHAR_RELATIONSHIP> (
                 ped, 4, i); // Real Angry!!!
 			

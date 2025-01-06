@@ -8,6 +8,8 @@
 #include "util/GenericUtil.h"
 #include "util/Globals.h"
 
+#include "util/EffectTracer.h"
+
 EffectInstance::EffectInstance (EffectBase *effect) : effect (effect) {}
 
 void
@@ -22,6 +24,8 @@ EffectInstance::Start ()
         const char *path = GAME_PATH ((char *) file.c_str ());
 
         PlayAudioStream (path);
+		
+		EffectTracer::GetInstance().LogEffect(this->effect->GetMetadata().name + " Start");
 
         this->effect->OnStart (this);
         Globals::enabledEffects[effect->GetID ().substr (7)] = true;
@@ -34,6 +38,7 @@ EffectInstance::End ()
     cleanupHandler.DoCleanup ();
     if (this->effect)
     {
+		EffectTracer::GetInstance().LogEffect(this->effect->GetMetadata().name + " End");
         this->effect->OnEnd (this);
         Globals::enabledEffects[effect->GetID ().substr (7)] = false;
     }

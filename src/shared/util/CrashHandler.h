@@ -1,5 +1,4 @@
-#ifndef CRASH_HANDLER_H
-#define CRASH_HANDLER_H
+#pragma once
 
 #include <dbghelp.h>
 #include <string>
@@ -26,5 +25,3 @@ private:
     // Fungsi untuk log pesan
     static void Log(const std::string& message);
 };
-
-#endif // CRASH_HANDLER_H
