@@ -241,8 +241,8 @@ private:
         if (!player) return;
 
         bool hasParachute
-            = player->m_aWeapons[player->m_nActiveWeaponSlot].m_eWeaponType
-              == WEAPON_PARACHUTE;
+            = player->m_aWeapons[player->m_nSelectedWepSlot].m_eWeaponType
+              == WEAPONTYPE_PARACHUTE;
 
         if (hasParachute) return;
 
@@ -418,7 +418,7 @@ private:
                                  char *unknown)
     {
         if (physical->m_nModelIndex == 708
-            && weaponType != eWeaponType::WEAPON_CHAINSAW)
+            && weaponType != eWeaponType::WEAPONTYPE_CHAINSAW)
             return false;
 
         return cb ();
@@ -432,7 +432,7 @@ private:
         cb ();
 
         if (object->m_nModelIndex == 708
-            && weaponType == eWeaponType::WEAPON_CHAINSAW)
+            && weaponType == eWeaponType::WEAPONTYPE_CHAINSAW)
         {
             object->m_pObjectInfo->m_fColDamageMultiplier = 0.5f;
 

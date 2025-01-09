@@ -49,7 +49,7 @@ public:
 
         if (!self || self->m_nPhysicalFlags.bBulletProof) return;
 
-        if (type >= WEAPON_PISTOL && type <= WEAPON_SNIPERRIFLE)
+        if (type >= WEAPONTYPE_PISTOL && type <= WEAPONTYPE_SNIPERRIFLE)
         {
             float mult = std::abs (dmgMult - 1.0f);
             self->m_fHealth -= (intensity * mult);
@@ -65,7 +65,7 @@ public:
 
         if (!self || self->m_nPhysicalFlags.bBulletProof) return;
 
-        if (type >= WEAPON_PISTOL && type <= WEAPON_SNIPERRIFLE)
+        if (type >= WEAPONTYPE_PISTOL && type <= WEAPONTYPE_SNIPERRIFLE)
         {
             float mult = std::abs (dmgMult - 1.0f);
             self->m_fHealth -= (intensity * mult);
@@ -80,8 +80,8 @@ public:
     {
         if (thisCalc->m_pDamager != FindPlayerPed ()) return;
 
-        if (thisCalc->m_weaponType >= WEAPON_PISTOL
-            && thisCalc->m_weaponType <= WEAPON_SNIPERRIFLE)
+        if (thisCalc->m_weaponType >= WEAPONTYPE_PISTOL
+            && thisCalc->m_weaponType <= WEAPONTYPE_SNIPERRIFLE)
         {
             thisCalc->m_fDamageFactor *= dmgMult;
         }
@@ -95,8 +95,8 @@ public:
                                         CPed *ped, uint8_t *cDamageResponseInfo,
                                         char a4)
     {
-        if (thisCalc->m_weaponType >= WEAPON_PISTOL
-            && thisCalc->m_weaponType <= WEAPON_SNIPERRIFLE)
+        if (thisCalc->m_weaponType >= WEAPONTYPE_PISTOL
+            && thisCalc->m_weaponType <= WEAPONTYPE_SNIPERRIFLE)
         {
             thisCalc->m_fDamageFactor *= dmgMult;
         }

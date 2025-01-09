@@ -60,10 +60,10 @@ public:
             CStreaming::SetModelIsDeletable (MODEL_AK47);
 
             Command<Commands::GIVE_WEAPON_TO_CHAR> (createdPed,
-                                                                   WEAPON_AK47,
+                                                                   WEAPONTYPE_AK47,
                                                                    9999);
             Command<Commands::SET_CURRENT_CHAR_WEAPON> (
-                createdPed, WEAPON_AK47);
+                createdPed, WEAPONTYPE_AK47);
 
             Command<Commands::SET_CHAR_SHOOT_RATE> (createdPed,
                                                                    100);

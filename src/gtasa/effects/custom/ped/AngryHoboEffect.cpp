@@ -10,15 +10,15 @@ using namespace plugin;
 class SpawnAngryHobo : public OneTimeEffect
 {
     int hoboType = 0; // 0 - DE, 1 - Rocket, 2 - Homing Rocket, 3 - Minigun, 4 - Spawn Hydra
-    eWeaponType weaponType = WEAPON_BRASSKNUCKLE;
+    eWeaponType weaponType = WEAPONTYPE_BRASSKNUCKLE;
 
 public:
     SpawnAngryHobo (int type) : hoboType (type) {
         switch (type) {
-            case 0: weaponType = WEAPON_DESERT_EAGLE; break;
-            case 1: weaponType = WEAPON_RLAUNCHER; break;
-            case 2: weaponType = WEAPON_RLAUNCHER_HS; break;
-            case 3: weaponType = WEAPON_MINIGUN; break;
+            case 0: weaponType = WEAPONTYPE_DESERT_EAGLE; break;
+            case 1: weaponType = WEAPONTYPE_RLAUNCHER; break;
+            case 2: weaponType = WEAPONTYPE_RLAUNCHER_HS; break;
+            case 3: weaponType = WEAPONTYPE_MINIGUN; break;
         }
     }
 

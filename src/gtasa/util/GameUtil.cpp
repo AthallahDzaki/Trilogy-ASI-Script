@@ -289,7 +289,7 @@ GameUtil::ClearWeapons (CPed *ped)
     if (ped->m_pIntelligence->GetUsingParachute ())
         ped->m_pIntelligence->ClearTasks (true, false);
 
-    for (int i = WEAPON_BRASSKNUCKLE; i < WEAPON_FLARE; i++)
+    for (int i = WEAPONTYPE_BRASSKNUCKLE; i < WEAPONTYPE_FLARE; i++)
     {
         eWeaponType type = static_cast<eWeaponType> (i);
         ped->ClearWeapon (type);

@@ -36,10 +36,10 @@ public:
         CPad *pad = playerPed->GetPadFromPlayer ();
         if (pad) pad->DisablePlayerControls |= 1 << 1;
 
-        if(playerPed->DoWeHaveWeaponAvailable(WEAPON_PARACHUTE)) // Has Parachute?
+        if(playerPed->DoWeHaveWeaponAvailable(WEAPONTYPE_PARACHUTE)) // Has Parachute?
         {
             hasParachute = true;
-            playerPed->ClearWeapon(WEAPON_PARACHUTE);
+            playerPed->ClearWeapon(WEAPONTYPE_PARACHUTE);
         }
 
         Command<Commands::SET_PLAYER_FIRE_BUTTON>(playerPed, false);
@@ -70,7 +70,7 @@ public:
         if(hasParachute) // Has Parachute?
         {
             hasParachute = false;
-            playerPed->GiveWeapon(WEAPON_PARACHUTE, 1, true);
+            playerPed->GiveWeapon(WEAPONTYPE_PARACHUTE, 1, true);
         }
 		Command<Commands::FREEZE_CHAR_POSITION>(playerPed, false);
 		Command<Commands::REMOVE_ANIMATION>("DANCING"); // Unload Dancing IFP (R* is Shit)

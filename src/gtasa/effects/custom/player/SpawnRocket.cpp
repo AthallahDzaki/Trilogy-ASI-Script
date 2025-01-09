@@ -20,7 +20,7 @@ public:
         CVector Angle = player->TransformFromObjectSpace (CVector (10.0f, 10.0f, 0.0f));
         int SpawnProjectile = inst->Random(1,15);
         for(int i = 0; i < SpawnProjectile; i++)
-            CProjectileInfo::AddProjectile(player, WEAPON_ROCKET_HS, player->TransformFromObjectSpace(CVector(0.0f, 0.0f, 100.0f + ((float)i * 50.0f))), 5.0f, &Angle, player);
+            CProjectileInfo::AddProjectile(player, WEAPONTYPE_ROCKET_HS, player->TransformFromObjectSpace(CVector(0.0f, 0.0f, 100.0f + ((float)i * 50.0f))), 5.0f, &Angle, player);
         inst->OverrideName("Spawn " + std::to_string(SpawnProjectile) + " Rocket");
     }
 };

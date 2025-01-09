@@ -37,12 +37,12 @@ public:
         CStreaming::RequestModel (MODEL_TEC9, 2); // Tec-9
         CStreaming::LoadAllRequestedModels (false);
 
-        player->ClearWeapon (WEAPON_TEC9);
-        player->ClearWeapon (WEAPON_MICRO_UZI);
-        player->ClearWeapon (WEAPON_MP5);
+        player->ClearWeapon (WEAPONTYPE_TEC9);
+        player->ClearWeapon (WEAPONTYPE_MICRO_UZI);
+        player->ClearWeapon (WEAPONTYPE_MP5);
 
-        player->GiveWeapon (WEAPON_TEC9, 99999, 1);
-        player->SetCurrentWeapon (player->GetWeaponSlot (WEAPON_TEC9));
+        player->GiveWeapon (WEAPONTYPE_TEC9, 99999, 1);
+        player->SetCurrentWeapon (player->GetWeaponSlot (WEAPONTYPE_TEC9));
 
         CStreaming::SetModelIsDeletable (MODEL_TEC9);
     }
@@ -53,11 +53,11 @@ public:
         CPlayerPed *player = FindPlayerPed ();
         if (!player) return;
 
-        if (!player->DoWeHaveWeaponAvailable (WEAPON_TEC9)) return;
+        if (!player->DoWeHaveWeaponAvailable (WEAPONTYPE_TEC9)) return;
 
         CWeapon weapon
-            = player->m_aWeapons[player->GetWeaponSlot (WEAPON_TEC9)];
-        if (weapon.m_nTotalAmmo > 500) player->SetAmmo (WEAPON_TEC9, 500);
+            = player->m_aWeapons[player->GetWeaponSlot (WEAPONTYPE_TEC9)];
+        if (weapon.m_nAmmoTotal > 500) player->SetAmmo (WEAPONTYPE_TEC9, 500);
     }
 
     static void
@@ -115,7 +115,7 @@ public:
                                         int damageFactor, int pedPiece,
                                         char direction)
     {
-        if (creator == FindPlayerPed () && weaponType == WEAPON_SNIPERRIFLE
+        if (creator == FindPlayerPed () && weaponType == WEAPONTYPE_SNIPERRIFLE
             && IsPointValid (victim->GetPosition ()))
             TeleportToPosition ((CPed *) creator, victim->GetPosition ());
 
@@ -127,7 +127,7 @@ public:
                                    CPed *creator, eWeaponType weaponType,
                                    float damage, CVector coords)
     {
-        if (creator == FindPlayerPed () && weaponType == WEAPON_SNIPERRIFLE
+        if (creator == FindPlayerPed () && weaponType == WEAPONTYPE_SNIPERRIFLE
             && IsPointValid (thisVehicle->GetPosition ()))
             TeleportToPosition ((CPed *) creator, thisVehicle->GetPosition ());
 
@@ -139,7 +139,7 @@ public:
                                  RwV3d *fxOrigin, RwV3d *fxDirection,
                                  CEntity *creator, eWeaponType weaponType)
     {
-        if (creator == FindPlayerPed () && weaponType == WEAPON_SNIPERRIFLE
+        if (creator == FindPlayerPed () && weaponType == WEAPONTYPE_SNIPERRIFLE
             && IsPointValid (thisObject->GetPosition ()))
             TeleportToPosition ((CPed *) creator, thisObject->GetPosition ());
 
