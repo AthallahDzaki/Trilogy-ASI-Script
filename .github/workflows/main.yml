@@ -1,4 +1,4 @@
-name: CMake
+name: Build Project
 
 on: 
   push:
@@ -57,6 +57,7 @@ jobs:
     - uses: seepine/hash-files@v1
       id: get-hash
       with: 
+        workdir: "bin/output_SA"
         patterns: "*.asi"
     
     - name: Echo hash
