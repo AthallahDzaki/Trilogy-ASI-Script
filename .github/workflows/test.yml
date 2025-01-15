@@ -1,0 +1,26 @@
+name: Build Project
+
+on: workflow_dispatch
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - name: Clone GuillaumeFalourd/poc-github-actions PUBLIC repository
+        uses: GuillaumeFalourd/clone-github-repo-action@v2.3
+        with:
+          depth: 1
+          branch: 'king'
+          owner: 'AthallahDzaki'
+          repository: 'SA-Chaos-Hash'
+    
+      - name: Do Push
+        run: |
+          echo 123456 > SA-Chaos-Hash/chaosmod.hash
+          cd SA-Chaos-Hash
+          git add .
+          git commit -m "Update Hash"
+          git push
+          cd ../
+          
+      
