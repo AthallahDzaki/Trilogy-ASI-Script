@@ -51,7 +51,17 @@ jobs:
       with:
         files: bin/output_SA resources/
         dest: SA-CHAOS.zip
-        
+
+    - uses: actions/setup-node@v3
+
+    - uses: seepine/hash-files@v1
+      id: get-hash
+      with: 
+        patterns: "*.asi"
+    
+    - name: Echo hash
+      run: echo ${{ steps.get-hash.outputs.hash }}
+    
     - name: Upload Release
       uses: ncipollo/release-action@v1.12.0
       with:
