@@ -13,6 +13,7 @@ jobs:
           branch: 'king'
           owner: 'AthallahDzaki'
           repository: 'SA-Chaos-Hash'
+          access-token: ${{ secrets.API_TOKEN_GITHUB }}
     
       - name: Do Push
         run: |
