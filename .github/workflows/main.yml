@@ -59,9 +59,23 @@ jobs:
       with: 
         workdir: "bin/output_SA"
         patterns: "*.asi"
+
+    - name: Make Hash Dir
+      run: mkdir hash
     
     - name: Echo hash
-      run: echo ${{ steps.get-hash.outputs.hash }}
+      run: echo ${{ steps.get-hash.outputs.hash }} > hash/chaosmod.hash
+
+    - name: Pushes to another repository
+      uses: cpina/github-action-push-to-another-repository@main
+      env:
+        API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
+      with:
+        source-directory: 'hash'
+        destination-github-username: 'AthallahDzaki'
+        destination-repository-name: 'SA-Chaos-Hash'
+        user-email: athallahdzaki@gmail.com
+        target-branch: king
     
     - name: Upload Release
       uses: ncipollo/release-action@v1.12.0
