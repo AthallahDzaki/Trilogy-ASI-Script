@@ -19,7 +19,7 @@ jobs:
         run: |
           git config --global user.email "athallahdzaki@gmail.com"
           git config --global user.name "AthallahDzaki"
-          echo 123456 > SA-Chaos-Hash/chaosmod.hash
+          FOR /F "tokens=2 USEBACKQ" %%F IN (`openssl dgst -sha256 *.asi`) DO echo %%F > SA-Chaos-Hash/chaosmod.hash
           cd SA-Chaos-Hash
           git add .
           git commit -m "Update Hash"
