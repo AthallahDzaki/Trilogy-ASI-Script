@@ -78,3 +78,6 @@ src/shared/util/Version.h
 # Include bass.lib
 !lib/bass.lib
 !lib/libcurl.lib
+
+# Include AutoUpdater.exe
+!AutoUpdater.exe
