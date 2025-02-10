@@ -191,17 +191,12 @@ private:
     static void
     HandleCJInvisibleFix()
     {
-        if(KeyPressed(VK_F8)) {
-            const char *asciiText = "Dont Spam This Key Or Your Game Will Crash";
-            char gxtText[256];  // Buffer untuk hasil konversi
+        byte gameState
+            = injector::ReadMemory<byte> (0xC8D4C0, true); // GameState
 
-            // Memanggil fungsi untuk konversi
-            AsciiToGxtChar(asciiText, gxtText);
-            // void SetHelpMessage(char const* text, bool quickMessage, bool permanent, bool addToBrief);
-            CHud::SetHelpMessage(gxtText, true, false, false);
-
-            GameUtil::RebuildPlayer();
-        }
+        if (gameState != 9) return; // Patch only in GAME STATE
+		
+		Command<Commands::SET_INT_STAT>(276, 1); // Some Russian Modder at Zombie Andreas
     }
 
     static void
