@@ -1,4 +1,5 @@
 #include "GameUtil.h"
+#include "util/Globals.h"
 
 CPedAcquaintance *
 GameUtil::GetPedTypeAcquaintances (int PedType)
@@ -370,6 +371,11 @@ GameUtil::IsPlayerSafe ()
     {
         return false;
     }
+	
+	if (Globals::enabledEffects["sadbor_dance_short"] || Globals::enabledEffects["sadbor_dance_long"])
+	{
+		return false;
+	}
 
     if (CEntryExitManager::WeAreInInteriorTransition ()) return false;
 

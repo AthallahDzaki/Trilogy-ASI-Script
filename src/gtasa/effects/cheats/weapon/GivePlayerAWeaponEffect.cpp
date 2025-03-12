@@ -98,7 +98,7 @@ DEFINE_EFFECT (GivePlayerAWeapon, "effect_give_shotgun", GROUP_WEAPONS, WEAPONTY
 DEFINE_EFFECT (GivePlayerAWeapon, "effect_give_rocket_launcher", GROUP_WEAPONS, WEAPONTYPE_RLAUNCHER_HS);
 DEFINE_EFFECT (GivePlayerAWeapon, "effect_give_pistol", GROUP_WEAPONS, WEAPONTYPE_PISTOL_SILENCED);
 DEFINE_EFFECT (GivePlayerAWeapon, "effect_give_minigun", GROUP_WEAPONS, WEAPONTYPE_MINIGUN);
-DEFINE_EFFECT (GivePlayerAWeapon, "effect_WEAPONTYPE_set_4", GROUP_WEAPONS, WEAPONTYPE_MINIGUN);
+DEFINE_EFFECT (GivePlayerAWeapon, "effect_weapon_set_4", GROUP_WEAPONS, WEAPONTYPE_MINIGUN);
 DEFINE_EFFECT (GivePlayerAWeapon, "effect_give_grenades", GROUP_WEAPONS, WEAPONTYPE_GRENADE);
 DEFINE_EFFECT (GivePlayerAWeapon, "effect_give_chainsaw", GROUP_WEAPONS, WEAPONTYPE_CHAINSAW);
 DEFINE_EFFECT (GivePlayerAWeapon, "effect_get_parachute", GROUP_WEAPONS, WEAPONTYPE_PARACHUTE);

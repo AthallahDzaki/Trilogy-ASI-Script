@@ -206,4 +206,5 @@ DEFINE_EFFECT (CustomTexturesEffect, "effect_textures_custom",                  
 DEFINE_EFFECT (CustomTexturesEffect, "effect_texture_frankenstein",             GROUP_CUSTOM_TEXTURES, "tt_xfrnknstnx.png");
 DEFINE_EFFECT (CustomTexturesEffect, "effect_texture_wdg",                      GROUP_CUSTOM_TEXTURES, "tt_wdgofficial.png");
 DEFINE_EFFECT (CustomTexturesEffect, "effect_texture_dinoandrean",              GROUP_CUSTOM_TEXTURES, "tt_dinoandreann.png");
+DEFINE_EFFECT (CustomTexturesEffect, "effect_texture_znine",                    GROUP_CUSTOM_TEXTURES, "tt_znine.png");
 // clang-format on
