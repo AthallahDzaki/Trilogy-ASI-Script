@@ -41,7 +41,7 @@ public:
 
             ped->SetPosn (position
                           + CVector (inst->Random (-1.0f, 1.0f),
-                                     inst->Random (-1.0f, 1.0f), 3.0f));
+                                     3.0f, 2.0f));
         }
 
         inst->Disable ();
